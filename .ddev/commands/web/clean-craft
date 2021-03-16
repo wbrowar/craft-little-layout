@@ -1,0 +1,20 @@
+#!/bin/bash
+
+## Description: Remove installed version of Craft.
+## Usage: clean-craft
+## Example: "ddev clean-craft"
+
+echo "Changing working directory to /var/www/html/_source/_craft/"
+cd /var/www/html/_source/_craft/
+
+echo "Removing Craft files"
+rm -f composer.lock
+rm -f config/license.key
+rm -rf storage/config-deltas
+rm -rf storage/logs
+rm -rf storage/runtime
+rm -rf vendor
+
+echo "Next steps:"
+echo "  - Drop database tables (ddev describe)"
+echo "  - Run 'ddev restart'"

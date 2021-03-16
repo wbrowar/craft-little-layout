@@ -1,0 +1,46 @@
+{
+    "name": "wbrowar/little-layout",
+    "description": "SOME_DESCRIPTION",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "little layout"
+    ],
+    "support": {
+        "docs": "https://github.com/wbrowar/little-layout/blob/master/README.md",
+        "issues": "https://github.com/wbrowar/little-layout/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Browar",
+            "homepage": "https://wbrowar.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "wbrowar\\littlelayout\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Little Layout",
+        "handle": "little-layout",
+        "developer": "Will Browar",
+        "developerUrl": "https://wbrowar.com",
+        "documentationUrl": "https://github.com/wbrowar/little-layout/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/wbrowar/little-layout/master/CHANGELOG.md",
+        "class": "wbrowar\\littlelayout\\LittleLayout"
+    }
+}

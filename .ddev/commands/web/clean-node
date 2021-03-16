@@ -1,0 +1,16 @@
+#!/bin/bash
+
+## Description: Remove installed version of Craft.
+## Usage: clean-node
+## Example: "ddev clean-node"
+
+echo "Changing working directory to /var/www/html/"
+cd /var/www/html/
+
+echo "Removing Node files"
+rm -f package-lock.json
+rm -rf node_modules
+
+echo "Next steps:"
+echo "  - Drop database tables (ddev describe)"
+echo "  - Run 'ddev restart'"

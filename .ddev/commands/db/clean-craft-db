@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Description: Remove Craft install from MySQL database.
+## Usage: clean-craft-db
+## Example: "ddev clean-craft-db"
+
+echo "SET FOREIGN_KEY_CHECKS = 0;" > ./temp.sql
+mysqldump --add-drop-table --no-data -uroot -proot db | grep 'DROP TABLE' >> ./temp.sql
+echo "SET FOREIGN_KEY_CHECKS = 1;" >> ./temp.sql
+mysql -uroot -proot db_name < ./temp.sql

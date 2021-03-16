@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Little Layout plugin for Craft CMS
+ *
+ * Layout Field Settings
+ *
+ * @author    Will Browar
+ * @copyright Copyright (c) 2021 Will Browar
+ * @link      https://wbrowar.com
+ * @package   LittleLayout
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("wbrowar\\littlelayout\\assetbundles\\littlelayout\\LittleLayoutAsset") %}
+
+{{ forms.textField({
+    label: 'Some Attribute',
+    instructions: 'Enter some attribute here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: field['someAttribute']})
+}}

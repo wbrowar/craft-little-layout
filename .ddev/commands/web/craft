@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Run Craft CMS console commands using the /var/www/html/_source/_craft/craft executable.
+## Usage: craft [command name]
+## Example: "ddev craft install/check"
+
+echo "Changing working directory to /var/www/html/_source/_craft/"
+cd /var/www/html/_source/_craft/
+
+echo "Running command"
+./craft $@

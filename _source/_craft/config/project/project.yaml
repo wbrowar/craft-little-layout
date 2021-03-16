@@ -1,0 +1,17 @@
+dateModified: 1613433928
+email:
+  fromEmail: email@example.com
+  fromName: 'Craft Plugin'
+  transportType: craft\mail\transportadapters\Sendmail
+system:
+  edition: solo
+  live: true
+  name: 'Craft Plugin'
+  schemaVersion: 3.6.2
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

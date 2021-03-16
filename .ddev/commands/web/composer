@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Run composer command in the /var/www/html/back-end/ directory.
+## Usage: composer [command]
+## Example: "ddev composer install"
+
+echo "Changing working directory to /var/www/html/back-end/"
+cd /var/www/html/_source/_craft/
+
+echo "Running command"
+composer $@

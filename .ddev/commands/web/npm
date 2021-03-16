@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Run npm command found in npm scripts at /var/www/html/_source/_assets/package.json.
+## Usage: npm [command name]
+## Example: "ddev npm run dev"
+
+echo "Changing working directory to /var/www/html/_source/_assets/"
+cd /var/www/html/_source/_assets/
+
+echo "Running command"
+npm $@
