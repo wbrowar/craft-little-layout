@@ -46,16 +46,18 @@ The following data can be retrieved in your Twig- or GraphQL-based templates:
 
 | Property | Description |
 |---|---|
-| `empty` | Determine if field has a value. |
-| `gridColumnStart` | Value for CSS Grid’s `grid-column-start` and `grid-column` properties. |
-| `gridColumnEnd` | Value for CSS Grid’s `grid-column-end` and `grid-column` properties. |
-| `gridRowStart` | Value for CSS Grid’s `grid-row-start` and `grid-row` properties. |
-| `gridRowEnd` | Value for CSS Grid’s `grid-row-end` and `grid-row` properties. |
-| `gridColumnSpan` | Value for CSS Grid’s `grid-column` property. |
-| `gridRowSpan` | Value for CSS Grid’s `grid-row` property. |
-| `selectedColumns` | Array of columns selected in the layout field. |
-| `selectedRows` | Array of rows selected in the layout field. |
-| `selectedCoordinates` | Array of coordinates selected in the layout field. Coordinates are formatted in `x|y` format. |
+| **empty** | Determine if field has a value. |
+| **gridColumnStart** | Value for CSS Grid’s `grid-column-start` and `grid-column` properties. |
+| **gridColumnEnd** | Value for CSS Grid’s `grid-column-end` and `grid-column` properties. |
+| **gridRowStart** | Value for CSS Grid’s `grid-row-start` and `grid-row` properties. |
+| **gridRowEnd** | Value for CSS Grid’s `grid-row-end` and `grid-row` properties. |
+| **gridColumnSpan** | Value for CSS Grid’s `grid-column` property. |
+| **gridRowSpan** | Value for CSS Grid’s `grid-row` property. |
+| **selectedColumns** | Array of columns selected in the layout field. |
+| **selectedRows** | Array of rows selected in the layout field. |
+| **selectedCoordinates** | Array of coordinates* selected in the layout field. |
+
+_*Coordinates are formatted in `x|y` format._
 
 ### Accessing Little Layout Values in Twig
 
