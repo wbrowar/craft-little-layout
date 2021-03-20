@@ -33,17 +33,22 @@ class Layout extends Field
     /**
      * @var int
      */
-    public $cols = 1;
+    public int $clearable = 1;
 
     /**
      * @var int
      */
-    public $defaultValue = '';
+    public int $cols = 1;
+
+    /**
+     * @var string
+     */
+    public string $defaultValue = '';
 
     /**
      * @var int
      */
-    public $rows = 1;
+    public int $rows = 1;
 
     // Static Methods
     // =========================================================================
@@ -74,10 +79,9 @@ class Layout extends Field
     {
         $rules = parent::rules();
         $rules = array_merge($rules, [
-            [['cols', 'rows'], 'integer'],
+            [['clearable', 'cols', 'rows'], 'integer'],
+            [['clearable', 'cols', 'rows'], 'default', 'value' => 1],
             ['defaultValue', 'string'],
-            ['cols', 'default', 'value' => 1],
-            ['rows', 'default', 'value' => 1],
             ['defaultValue', 'default', 'value' => ''],
         ]);
         return $rules;
@@ -164,69 +168,14 @@ class Layout extends Field
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-//        $valueArray = Json::decodeIfJson($value);
-//
-//        if ($valueArray['raw'] ?? false) {
-//            $valueParsed = explode('|', $valueArray['raw']);
-//
-//            if (count($valueParsed) == 4) {
-//                // Values for CSS grid
-//                $columnStart = $valueParsed[0];
-//                $columnEnd = $valueParsed[1] + 1;
-//                $rowStart = $valueParsed[2];
-//                $rowEnd = $valueParsed[3] + 1;
-//                $columnSpan = ($columnEnd - $columnStart);
-//                $rowSpan = ($rowEnd - $rowStart);
-//
-//                // Selected values
-//                $selectedColumns = [];
-//                foreach (range($columnStart, $columnEnd - 1) as $number) {
-//                    $selectedColumns[] = $number;
-//                }
-//                $selectedRows = [];
-//                foreach (range($rowStart, $rowEnd - 1) as $number) {
-//                    $selectedRows[] = $number;
-//                }
-//                $selectedCoordinates = [];
-//                foreach (range($columnStart, $columnEnd - 1) as $col) {
-//                    foreach (range($rowStart, $rowEnd - 1) as $row) {
-//                        $selectedCoordinates[] = $col . '|' . $row;
-//                    }
-//                }
-//            }
-//        }
-//
-//        // All of the properties that can be accessed from the field
-//        // Usage: {{ entry.layout.grid.columnStart }}
-//        $valueArray['empty'] = $valueArray['raw'] ?? false ? $valueArray['raw'] == '' : true;
-//        $valueArray['grid'] = [
-//            'columnStart' => $columnStart ?? null,
-//            'columnEnd' => $columnEnd ?? null,
-//            'rowStart' => $rowStart ?? null,
-//            'rowEnd' => $rowEnd ?? null,
-//            'columnSpan' => $columnSpan ?? null,
-//            'rowSpan' => $rowSpan ?? null,
-//        ];
-//        $valueArray['selected'] = [
-//            'columns' => $selectedColumns ?? null,
-//            'rows' => $selectedRows ?? null,
-//            'coordinates' => $selectedCoordinates ?? null,
-//        ];
-//
-//        return $valueArray;
-
-        // If we're passed in a string, assume it's JSON-encoded, and decode it
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
         }
-        // If we're passed in an array, make a model from it
         if (\is_array($value)) {
-            // Create a new LayoutModel model and populate it
             $model = new LayoutModel($value);
         } elseif ($value instanceof LayoutModel) {
             $model = $value;
         } else {
-            // Just create a new empty model
             $model = new LayoutModel(null);
         }
 
@@ -243,7 +192,6 @@ class Layout extends Field
 
     // Private Methods
     // =========================================================================
-
 
     /**
      * @inheritdoc

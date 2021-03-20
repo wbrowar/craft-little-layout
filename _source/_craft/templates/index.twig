@@ -1,5 +1,6 @@
 {#{% dd element.layout %}#}
 
+<h3>grid-column-start: x, grid-column-end: x, grid-row-start: y, grid-row-end: y</h3>
 <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px;">
   <div style="grid-column: 1 / 2; grid-row: 1 / 2; height: 30px; background-color: #6f777a;"></div>
   <div style="grid-column: 2 / 3; grid-row: 1 / 2; height: 30px; background-color: #6f777a;"></div>
@@ -22,12 +23,11 @@
   <div style="grid-column: 5 / 6; grid-row: 3 / 4; height: 30px; background-color: #6f777a;"></div>
   <div style="grid-column: 6 / 7; grid-row: 3 / 4; height: 30px; background-color: #6f777a;"></div>
   {% if not element.layout.empty %}
-    <div style="grid-column-start: {{ element.layout.grid.columnStart }}; grid-column-end: {{ element.layout.grid.columnEnd }}; grid-row-start: {{ element.layout.grid.rowStart }}; grid-row-end: {{ element.layout.grid.rowEnd }}; background-color: rgba(14,114,159,0.6);"></div>
+    <div style="grid-column-start: {{ element.layout.gridColumnStart }}; grid-column-end: {{ element.layout.gridColumnEnd }}; grid-row-start: {{ element.layout.gridRowStart }}; grid-row-end: {{ element.layout.gridRowEnd }}; background-color: rgba(14,114,159,0.6);"></div>
   {% endif %}
 </div>
 
-<hr>
-
+<h3>grid-column: x / span x, grid-row: y / span y</h3>
 <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px;">
   <div style="grid-column: 1 / 2; grid-row: 1 / 2; height: 30px; background-color: #6f777a;"></div>
   <div style="grid-column: 2 / 3; grid-row: 1 / 2; height: 30px; background-color: #6f777a;"></div>
@@ -50,60 +50,47 @@
   <div style="grid-column: 5 / 6; grid-row: 3 / 4; height: 30px; background-color: #6f777a;"></div>
   <div style="grid-column: 6 / 7; grid-row: 3 / 4; height: 30px; background-color: #6f777a;"></div>
   {% if not element.layout.empty %}
-    <div style="grid-column: {{ element.layout.grid.columnStart }} / span {{ element.layout.grid.columnSpan }}; grid-row: {{ element.layout.grid.rowStart }} / span {{ element.layout.grid.rowSpan }}; background-color: rgba(14,114,159,0.6);"></div>
+    <div style="grid-column: {{ element.layout.gridColumnStart }} / span {{ element.layout.gridColumnSpan }}; grid-row: {{ element.layout.gridRowStart }} / span {{ element.layout.gridRowSpan }}; background-color: rgba(14,114,159,0.6);"></div>
   {% endif %}
 </div>
 
 <hr>
 
 <p><b>Value:</b> <code><pre style="white-space: pre-wrap;">{{ element.layout|json_encode }}</pre></code></p>
-{{ element.layout.raw|json_encode }}
-{{ element.layout.empty|json_encode }}
-{{ element.layout.grid|json_encode }}
+<p><b>Empty:</b> {{ element.layout.empty|json_encode }}</p>
 {% if not element.layout.empty %}
   <p><b>Raw:</b> {{ element.layout.raw }}</p>
-  <p><b>Grid columnStart:</b> {{ element.layout.grid.columnStart }}</p>
-  <p><b>Grid columnEnd:</b> {{ element.layout.grid.columnEnd }}</p>
-  <p><b>Grid rowStart:</b> {{ element.layout.grid.rowStart }}</p>
-  <p><b>Grid rowEnd:</b> {{ element.layout.grid.rowEnd }}</p>
-  <p><b>Grid columnSpan:</b> {{ element.layout.grid.columnSpan }}</p>
-  <p><b>Grid rowSpan:</b> {{ element.layout.grid.rowSpan }}</p>
-{#  <p><b>Selected rows:</b> {{ element.layout.selected.rows|json_encode }}</p>#}
-{#  <p><b>Selected columns:</b> {{ element.layout.selected.columns|json_encode }}</p>#}
-{#  <p><b>Selected columns:</b> {{ element.layout.selected.coordinates|json_encode }}</p>#}
+  <p><b>gridColumnStart:</b> {{ element.layout.gridColumnStart }}</p>
+  <p><b>gridColumnEnd:</b> {{ element.layout.gridColumnEnd }}</p>
+  <p><b>gridRowStart:</b> {{ element.layout.gridRowStart }}</p>
+  <p><b>gridRowEnd:</b> {{ element.layout.gridRowEnd }}</p>
+  <p><b>gridColumnSpan:</b> {{ element.layout.gridColumnSpan }}</p>
+  <p><b>gridRowSpan:</b> {{ element.layout.gridRowSpan }}</p>
+  <p><b>selectedRows:</b> {{ element.layout.selectedRows|json_encode }}</p>
+  <p><b>selectedColumns:</b> {{ element.layout.selectedColumns|json_encode }}</p>
+  <p><b>selectedCoordinates:</b> {{ element.layout.selectedCoordinates|json_encode }}</p>
 
-{#  {% set result = gql('query {#}
-{#    entries(type:"products") {#}
-{#      title#}
-{#      ... on products_products_Entry {#}
-{#        layout {#}
-{#          empty#}
-{#        }#}
-{#      }#}
-{#    }#}
-{#  }') %}#}
+  {% set result = gql('{
+  entries(type: "products") {
+    ... on products_products_Entry {
+      featuredProducts {
+        __typename
+      }
+      layout {
+        empty
+        gridColumnStart
+        gridColumnEnd
+        gridRowStart
+        gridRowEnd
+        gridColumnSpan
+        gridRowSpan
+        selectedColumns
+        selectedRows
+        selectedCoordinates
+      }
+    }
+  }
+}') %}
 
-{#  {% if result.data %}#}
-{#    {% dd result.data.entries[0].layout|json_encode %}#}
-{#  {% endif %}#}
-{#  {% dd result|json_encode %}#}
-
-  {#{% for entry in result.data %}#}
-  {#  <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>#}
-  {#  <p class="timestamp">{{ entry.postDate }}</p>#}
-
-  {#  {% set image = entry.featuredImage[0] %}#}
-  {#  <img class="thumb" src="{{ image.url }}" alt="{{ image.altText }}">#}
-
-  {#  {{ entry.shortDescription|markdown }}#}
-  {#  <p><a href="{{ entry.url }}">Continue reading…</a></p>#}
-  {#{% endfor %}#}
+  <p><b>GQL Results:</b> {{ result.data.entries[0].layout|json_encode }}</p>
 {% endif %}
-
-{% set entries = craft.entries.layout(':notempty:').all() %}
-<p><b>Entries that have a layout set:</b></p>
-<ul>
-  {% for entry in entries %}
-    <li>{{ entry.title }}</li>
-  {% endfor %}
-</ul>

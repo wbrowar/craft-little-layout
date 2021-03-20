@@ -40,15 +40,6 @@ fieldLayouts:
             type: craft\fieldlayoutelements\Template
             width: 50
           -
-            fieldUid: a68b5677-d0e2-4551-8522-0d5bdefea17b # Tall Layout
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 25
-          -
             fieldUid: 6309a141-3408-4e4b-9d78-83bb6b2ce0c8 # Featured Products
             instructions: null
             label: null
@@ -84,6 +75,15 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 50
+          -
+            fieldUid: a68b5677-d0e2-4551-8522-0d5bdefea17b # Tall Layout
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
           -
             fieldUid: 43de9e80-e9bb-41bc-b2f4-41ad6b328418
             instructions: null

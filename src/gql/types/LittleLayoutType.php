@@ -22,10 +22,51 @@ class LittleLayoutType
                 'type' => Type::boolean(),
                 'description' => 'Determine if field has a value.',
             ],
-            'grid' => [
-                'name' => 'grid',
-                'type' => Type::listOf(GridType::getType()),
-            ]
+            'gridColumnStart' => [
+                'name' => 'gridColumnStart',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-column-start` and `grid-column` properties.',
+            ],
+            'gridColumnEnd' => [
+                'name' => 'gridColumnEnd',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-column-end` and `grid-column` properties.',
+            ],
+            'gridRowStart' => [
+                'name' => 'gridRowStart',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-row-start` and `grid-row` properties.',
+            ],
+            'gridRowEnd' => [
+                'name' => 'gridRowEnd',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-row-end` and `grid-row` properties.',
+            ],
+            'gridColumnSpan' => [
+                'name' => 'gridColumnSpan',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-column` property.',
+            ],
+            'gridRowSpan' => [
+                'name' => 'gridRowSpan',
+                'type' => Type::int(),
+                'description' => 'Value for CSS Grid’s `grid-row` property.',
+            ],
+            'selectedColumns' => [
+                'name' => 'selectedColumns',
+                'type' => Type::listOf(Type::int()),
+                'description' => 'Value for CSS Grid’s `grid-row` property.',
+            ],
+            'selectedRows' => [
+                'name' => 'selectedRows',
+                'type' => Type::listOf(Type::int()),
+                'description' => 'Value for CSS Grid’s `grid-row` property.',
+            ],
+            'selectedCoordinates' => [
+                'name' => 'selectedCoordinates',
+                'type' => Type::listOf(Type::string()),
+                'description' => 'Array of coordinates selected in the layout field. Coordinates are formatted in `x|y` format.',
+            ],
         ];
     }
 }

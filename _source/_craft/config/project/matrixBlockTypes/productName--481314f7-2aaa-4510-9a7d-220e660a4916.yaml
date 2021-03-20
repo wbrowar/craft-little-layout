@@ -5,7 +5,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 649d744b-d6ae-4e90-a0c5-0e022ce2e0a5 # Beer Name
+            fieldUid: 649d744b-d6ae-4e90-a0c5-0e022ce2e0a5 # Product Name
             instructions: null
             label: null
             required: false
@@ -51,18 +51,19 @@ fields:
     name: 'Vertical Align'
     searchable: false
     settings:
-      cols: '1'
+      clearable: 1
+      cols: 1
       defaultValue: ''
-      rows: '3'
+      rows: 3
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout
-  649d744b-d6ae-4e90-a0c5-0e022ce2e0a5: # Beer Name
+  649d744b-d6ae-4e90-a0c5-0e022ce2e0a5: # Product Name
     contentColumnType: text
     fieldGroup: null
-    handle: beerName
+    handle: productName
     instructions: ''
-    name: 'Beer Name'
+    name: 'Product Name'
     searchable: false
     settings:
       byteLimit: null
@@ -84,9 +85,10 @@ fields:
     name: 'Text Align'
     searchable: false
     settings:
-      cols: '3'
+      clearable: 2
+      cols: 3
       defaultValue: 1|1|1|1
-      rows: '1'
+      rows: 1
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout
@@ -98,9 +100,10 @@ fields:
     name: Layout
     searchable: false
     settings:
-      cols: '6'
+      clearable: 2
+      cols: 6
       defaultValue: 1|6|1|1
-      rows: '1'
+      rows: 1
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout

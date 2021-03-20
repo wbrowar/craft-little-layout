@@ -1,13 +1,14 @@
 contentColumnType: text
 fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f # Beer
 handle: layout
-instructions: 'This is the layout for this page.'
+instructions: 'Lay out image on featured products grid.'
 name: Layout
 searchable: false
 settings:
-  cols: '6'
-  defaultValue: ''
-  rows: '3'
+  clearable: 1
+  cols: 6
+  defaultValue: 2|5|1|1
+  rows: 3
 translationKeyFormat: null
 translationMethod: none
 type: wbrowar\littlelayout\fields\Layout

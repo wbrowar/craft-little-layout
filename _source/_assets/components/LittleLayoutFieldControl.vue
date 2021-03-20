@@ -19,7 +19,7 @@
           ></div>
         </div>
       </div>
-      <div v-if="editable && hasSelected">
+      <div v-if="clearable && editable && hasSelected">
         <button ref="clear" type="button" class="clear-btn" title="Clear" aria-label="Clear" @click="clearSelected"></button>
       </div>
     </div>
@@ -33,6 +33,10 @@ import {defineComponent, ref} from 'vue'
 export default defineComponent({
   name: 'LittleLayoutFieldControl',
   props: {
+    clearable: {
+      type: Boolean,
+      default: false,
+    },
     editable: {
       type: Boolean,
       default: false,
@@ -76,7 +80,7 @@ export default defineComponent({
       if (this.xStart && this.xEnd && this.yStart && this.yEnd) {
         return `${ this.xStart }|${ this.xEnd }|${ this.yStart }|${ this.yEnd }`;
       }
-      return '';
+      return 'empty';
     },
     fullFieldName() {
       return `${ this.fieldNamespace }[${ this.fieldName }]`

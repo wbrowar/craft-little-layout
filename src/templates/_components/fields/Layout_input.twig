@@ -13,13 +13,14 @@
  */
 #}
 
-{% set startingValue = value.raw ?? field.defaultValue %}
+{% set startingValue = value.raw == '' ? field.defaultValue : value.raw %}
 
 <div
   data-little-layout="{{ namespacedId }}"
   data-field-type="input"
-  data-cols="{{ field.cols }}"
   data-default-value="{{ startingValue }}"
+  data-clearable="{{ field.clearable }}"
+  data-cols="{{ field.cols }}"
   data-editable="{{ editable ? 'true' : 'false' }}"
   data-handle="{{ field.handle }}"
   data-rows="{{ field.rows }}"

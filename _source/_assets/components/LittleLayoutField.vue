@@ -1,5 +1,6 @@
 <template>
   <LittleLayoutFieldControl
+    :clearable="settingsClearable === '1'"
     :editable="editable === 'true'"
     :field-namespace="field.fieldNamespacedName"
     :field-default="defaultValue"
@@ -19,12 +20,13 @@ export default defineComponent({
   components: {
     LittleLayoutFieldControl,
   },
-  props: ['cols', 'defaultValue', 'editable', 'field', 'handle', 'rows', 'scrollMessage'],
+  props: ['clearable', 'cols', 'defaultValue', 'editable', 'field', 'handle', 'rows', 'scrollMessage'],
   setup: (props) => {
+    const settingsClearable = ref(props.clearable);
     const settingsCols = ref(props.cols ? parseInt(props.cols) : 1);
     const settingsRows = ref(props.rows ? parseInt(props.rows) : 1);
 
-    return { settingsCols, settingsRows }
+    return { settingsClearable, settingsCols, settingsRows }
   },
 })
 </script>
