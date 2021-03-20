@@ -28,8 +28,6 @@ Little Layout is a compact field that makes it easy for content authors to adjus
 
 ## Configuring Little Layout
 
-<img src="resources/img/settings.png" alt="Fields used for plugin settings next to a demo grid layout" width="300" />
-
 When setting up a new Little Layout field, you will need to define how many columns and rows are available in your field. A preview of your field will appear and will get updated as you adjust your settings.
 
 After your columns and rows are set, you can set a default value in your field preview. It works just like the field does during the author experience:
@@ -39,6 +37,8 @@ After your columns and rows are set, you can set a default value in your field p
 - Once a value is added, click on the "x" icon to the right to clear the field
 
 Use the Empty Layout setting to determine if authors can clear out the layouts they have set. _NOTE: setting your field to `required` also removes the author’s ability to clear field layouts, regardless of this setting._
+
+<img src="resources/img/settings.png" alt="Fields used for plugin settings next to a demo grid layout" width="500" />
 
 ## Using Little Layout
 
@@ -164,9 +164,9 @@ The same values can be retrieved in GraphQl, like this:
 
 ### Example: Simple Text Align Field
 
-![Screenshot](resources/img/matrix-example.png)
-
 You can also use the values selected in a Little Layout field for other purposes. For example, you use a Little Layout field as a visual way to select between text `left`, `center`, and `right` alignment.
+
+![Screenshot](resources/img/matrix-example.png)
 
 To set this up, you could do something like this:
 
