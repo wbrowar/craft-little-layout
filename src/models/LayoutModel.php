@@ -2,7 +2,7 @@
 /**
  * Little Layout plugin for Craft CMS 3.x
  *
- * SOME_DESCRIPTION
+ * A compact, visual way to lay out fields, elements, and Matrix blocks.
  *
  * @link      https://wbrowar.com
  * @copyright Copyright (c) 2021 Will Browar

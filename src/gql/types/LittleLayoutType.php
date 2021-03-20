@@ -55,12 +55,12 @@ class LittleLayoutType
             'selectedColumns' => [
                 'name' => 'selectedColumns',
                 'type' => Type::listOf(Type::int()),
-                'description' => 'Value for CSS Grid’s `grid-row` property.',
+                'description' => 'Array of columns selected in the layout field.',
             ],
             'selectedRows' => [
                 'name' => 'selectedRows',
                 'type' => Type::listOf(Type::int()),
-                'description' => 'Value for CSS Grid’s `grid-row` property.',
+                'description' => 'Array of rows selected in the layout field.',
             ],
             'selectedCoordinates' => [
                 'name' => 'selectedCoordinates',

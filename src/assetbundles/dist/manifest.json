@@ -1,32 +1,16 @@
 {
-  "field.ts": {
-    "file": "assets/field.d343d2e9.js",
-    "src": "field.ts",
+  "little-layout.ts": {
+    "file": "assets/little-layout.5fe72174.js",
+    "src": "little-layout.ts",
     "isEntry": true,
     "imports": [
-      "_global.744331c3.js",
-      "_vendor.2ac72789.js"
+      "_vendor.baa867cf.js"
     ],
     "css": [
-      "assets/field.4233c85c.css"
+      "assets/little-layout.1c2192e8.css"
     ]
   },
-  "settings.ts": {
-    "file": "assets/settings.a99c273f.js",
-    "src": "settings.ts",
-    "isEntry": true,
-    "imports": [
-      "_global.744331c3.js",
-      "_vendor.2ac72789.js"
-    ]
-  },
-  "_vendor.2ac72789.js": {
-    "file": "assets/vendor.2ac72789.js"
-  },
-  "_global.744331c3.js": {
-    "file": "assets/global.744331c3.js",
-    "css": [
-      "assets/global.24337915.css"
-    ]
+  "_vendor.baa867cf.js": {
+    "file": "assets/vendor.baa867cf.js"
   }
 }
