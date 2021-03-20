@@ -57,7 +57,9 @@ The following data can be retrieved in your Twig- or GraphQL-based templates:
 | **selectedRows** | Array of rows selected in the layout field. |
 | **selectedCoordinates** | Array of coordinates* selected in the layout field. |
 
-_*Coordinates are formatted in `x|y` format._
+_*Coordinates are formatted in `'x|y'` format._
+
+---
 
 ### Accessing Little Layout Values in Twig
 
@@ -81,6 +83,21 @@ Or you could use the shorthand `grid-column` and `grid-row` properties and provi
 
 ```twig
 <div style="grid-column: {{ element.fieldHandle.gridColumnStart }} / span {{ element.fieldHandle.gridColumnSpan }}; grid-row: {{ element.fieldHandle.gridRowStart }} / span {{ element.fieldHandle.gridRowSpan }};"></div>
+```
+
+Even better, consider using CSS Custom Properties:
+
+```twig
+<div class="layout" style="--grid-column-start: {{ element.fieldHandle.gridColumnStart }}; --grid-column-span: {{ element.fieldHandle.gridColumnSpan }}; --grid-row-start: {{ element.fieldHandle.gridRowStart }}; --grid-row-span: {{ element.fieldHandle.gridRowSpan }};"></div>
+```
+
+With CSS that looks like this:
+
+```css
+.layout {
+   grid-column: var(--grid-column-start, 1) / span var(--grid-column-span, 1);
+   grid-row: var(--grid-row-start, 1) / span var(--grid-row-span, 1);
+}
 ```
 
 ---
