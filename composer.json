@@ -1,6 +1,6 @@
 {
     "name": "wbrowar/little-layout",
-    "description": "SOME_DESCRIPTION",
+    "description": "A compact, visual way to lay out fields, elements, and Matrix blocks.",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -22,10 +22,10 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "craftcms/cms": "^3.6.0"
     },
     "require-dev": {
-      "craftcms/cms": "^3.2.0",
+      "craftcms/cms": "^3.6.0",
       "codeception/codeception": "^3.0",
       "vlucas/phpdotenv": "^3.0"
     },

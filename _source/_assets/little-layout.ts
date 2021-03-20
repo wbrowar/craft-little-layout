@@ -38,11 +38,9 @@ import './global.css';
     Plugin.prototype = {
 
         init: function(id) {
-            var _this = this;
+            const _this = this;
 
             $(function () {
-
-                console.log('This', _this);
 
                 const app = document.querySelector(`[data-little-layout="${ _this.options.namespacedId }"]`);
                 if (app?.dataset?.fieldType === 'input') {

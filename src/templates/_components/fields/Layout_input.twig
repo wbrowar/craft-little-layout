@@ -15,11 +15,16 @@
 
 {% set startingValue = value.raw == '' ? field.defaultValue : value.raw %}
 
+{#{% dd field.required %}#}
+{#{% if field.required %}#}
+{#  {% dd 'it happened' %}#}
+{#{% endif %}#}
+
 <div
   data-little-layout="{{ namespacedId }}"
   data-field-type="input"
   data-default-value="{{ startingValue }}"
-  data-clearable="{{ field.clearable }}"
+  data-clearable="{{ field.required ? 0 : field.clearable }}"
   data-cols="{{ field.cols }}"
   data-editable="{{ editable ? 'true' : 'false' }}"
   data-handle="{{ field.handle }}"

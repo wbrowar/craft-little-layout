@@ -9,7 +9,7 @@
           <p>Define the columns in your layout.</p>
         </div>
         <div class="input ltr">
-          <input type="text" id="cols" class="text" size="3" :name="`${ field.fieldNamespace }[cols]`" autofocus="" autocomplete="off" aria-describedby="cols-instructions" v-model.number="settingsCols">
+          <input type="text" id="cols" class="text" size="3" :name="`${ field.fieldNamespace }[cols]`" autofocus="" autocomplete="off" aria-describedby="cols-instructions" @focusout="validateColsField" v-model.number="settingsCols">
         </div>
       </div>
 
@@ -21,7 +21,7 @@
           <p>Define the rows in your layout.</p>
         </div>
         <div class="input ltr">
-          <input type="text" id="rows" class="text" size="3" :name="`${ field.fieldNamespace }[rows]`" autofocus="" autocomplete="off" aria-describedby="rows-instructions" v-model.number="settingsRows">
+          <input type="text" id="rows" class="text" size="3" :name="`${ field.fieldNamespace }[rows]`" autofocus="" autocomplete="off" aria-describedby="rows-instructions" @focusout="validateRowsField" v-model.number="settingsRows">
         </div>
       </div>
 
@@ -29,9 +29,6 @@
         <div class="heading">
           <label id="clearable-label" for="clearable">Empty Layout</label>
         </div>
-<!--        <div id="clearable-instructions" class="instructions">-->
-<!--          <p></p>-->
-<!--        </div>-->
         <div class="input ltr">
           <div class="select">
             <select id="clearable" :name="`${ field.fieldNamespace }[clearable]`" v-model="settingsClearable">
@@ -39,8 +36,6 @@
               <option value="2">Layouts cannot be reset</option>
             </select>
           </div>
-<!--          <input type="checkbox" id="clearable" :name="`${ field.fieldNamespace }[clearable]`" v-model="settingsClearable" true-value="1" false-value="0">-->
-<!--          <input type="text" id="clearable" class="text fullwidth" :name="`${ field.fieldNamespace }[clearable]`" autofocus="" autocomplete="off" aria-describedby="clearable-instructions" v-model.number="settingsClearable">-->
         </div>
       </div>
     </div>
@@ -49,11 +44,8 @@
 
       <div id="default-value-field" class="field">
         <div class="heading">
-          <label id="default-value-label" for="default-value">Default</label>
+          <label id="default-value-label" for="default-value">Default Value</label>
         </div>
-<!--        <div id="rows-instructions" class="instructions">-->
-<!--          <p>What this field will be called in the control panel.</p>-->
-<!--        </div>-->
         <div class="input ltr">
           <LittleLayoutFieldControl
               clearable
@@ -64,8 +56,9 @@
               field-name="defaultValue"
               :layout-cols="settingsCols"
               :layout-rows="settingsRows"
+              v-if="settingsCols && settingsRows"
           />
-<!--          <input type="text" id="rows" class="text fullwidth" name="types[wbrowar\littlelayout\fields\Layout][rows]" autofocus="" autocomplete="off" aria-describedby="rows-instructions" v-model.number="settingsRows">-->
+          <p v-else>⚠️ Settings missing! Layout Columns and Layout Rows settings are required.</p>
         </div>
       </div>
     </div>
@@ -88,6 +81,18 @@ export default defineComponent({
     const settingsRows = ref(props.rows ? parseInt(props.rows) : 1);
 
     return { settingsClearable, settingsCols, settingsRows }
+  },
+  methods: {
+    validateColsField() {
+      if (!this.settingsCols || !parseInt(this.settingsCols)) {
+        this.settingsCols = 1;
+      }
+    },
+    validateRowsField() {
+      if (!this.settingsRows || !parseInt(this.settingsRows)) {
+        this.settingsRows = 1;
+      }
+    },
   },
   mounted() {
     console.log('Little Layout Settings');

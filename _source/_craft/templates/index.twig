@@ -94,3 +94,49 @@
 
   <p><b>GQL Results:</b> {{ result.data.entries[0].layout|json_encode }}</p>
 {% endif %}
+
+{% set columnStartClasses = {
+  1: 'col-start-1',
+  2: 'col-start-2',
+  3: 'col-start-3',
+  4: 'col-start-4',
+  5: 'col-start-5',
+  6: 'col-start-6',
+} %}
+{% set columnSpanClasses = {
+  1: 'col-span-1',
+  2: 'col-span-2',
+  3: 'col-span-3',
+  4: 'col-span-4',
+  5: 'col-span-5',
+  6: 'col-span-6',
+} %}
+{% set rowStartClasses = {
+  1: 'row-start-1',
+  2: 'row-start-2',
+  3: 'row-start-3',
+  4: 'row-start-4',
+  5: 'row-start-5',
+  6: 'row-start-6',
+} %}
+{% set rowSpanClasses = {
+  1: 'row-span-1',
+  2: 'row-span-2',
+  3: 'row-span-3',
+  4: 'row-span-4',
+  5: 'row-span-5',
+  6: 'row-span-6',
+} %}
+
+{% set myAttributes = {
+  class: [
+    columnStartClasses[element.layout.gridColumnStart],
+    columnSpanClasses[element.layout.gridColumnSpan],
+    rowStartClasses[element.layout.gridRowStart],
+    rowSpanClasses[element.layout.gridRowSpan],
+  ],
+} %}
+
+<div {{ attr(myAttributes) }}></div>
+
+{# Results look like this: <div class="col-start-1 col-span-3 row-start-1 row-span-2"></div> #}
