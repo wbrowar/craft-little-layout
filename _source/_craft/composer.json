@@ -3,7 +3,7 @@
         "craftcms/cms": "3.6.10",
         "vlucas/phpdotenv": "^3.4.0",
         "mmikkel/cp-field-inspect": "^1.2.4",
-        "wbrowar/little-layout": "@dev"
+        "wbrowar/craft-little-layout": "@dev"
     },
     "autoload": {
         "psr-4": {

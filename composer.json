@@ -1,5 +1,5 @@
 {
-    "name": "wbrowar/little-layout",
+    "name": "wbrowar/craft-little-layout",
     "description": "A compact, visual way to lay out fields, elements, and Matrix blocks.",
     "type": "craft-plugin",
     "version": "1.0.0",
