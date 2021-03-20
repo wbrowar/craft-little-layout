@@ -1,13 +1,22 @@
-dateModified: 1613433928
+dateModified: 1616201552
 email:
   fromEmail: email@example.com
   fromName: 'Craft Plugin'
   transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  little-layout:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
 system:
-  edition: solo
+  edition: pro
   live: true
   name: 'Craft Plugin'
-  schemaVersion: 3.6.2
+  schemaVersion: 3.6.6
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

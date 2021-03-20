@@ -1,0 +1,32 @@
+{
+  "field.ts": {
+    "file": "assets/field.d343d2e9.js",
+    "src": "field.ts",
+    "isEntry": true,
+    "imports": [
+      "_global.744331c3.js",
+      "_vendor.2ac72789.js"
+    ],
+    "css": [
+      "assets/field.4233c85c.css"
+    ]
+  },
+  "settings.ts": {
+    "file": "assets/settings.a99c273f.js",
+    "src": "settings.ts",
+    "isEntry": true,
+    "imports": [
+      "_global.744331c3.js",
+      "_vendor.2ac72789.js"
+    ]
+  },
+  "_vendor.2ac72789.js": {
+    "file": "assets/vendor.2ac72789.js"
+  },
+  "_global.744331c3.js": {
+    "file": "assets/global.744331c3.js",
+    "css": [
+      "assets/global.24337915.css"
+    ]
+  }
+}

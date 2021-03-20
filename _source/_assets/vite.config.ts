@@ -10,16 +10,10 @@ export default defineConfig({
     manifest: true,
     outDir: '../../src/assetbundles/dist',
     rollupOptions: {
-      input: './main.ts',
+      input: {
+        'little-layout': './little-layout.ts',
+      },
     }
   },
   plugins: [vue()],
-  rollupOptions: {
-    external: ['vue'],
-    output: {
-      globals: {
-        vue: 'Vue'
-      }
-    }
-  },
 });

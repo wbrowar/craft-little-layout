@@ -2,6 +2,6 @@
  * Add global CSS
  */
 
-p {
-  background-color: red !important;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

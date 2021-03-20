@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f
+fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f # Beer
 handle: beerType
 instructions: ''
 name: 'Beer Type'

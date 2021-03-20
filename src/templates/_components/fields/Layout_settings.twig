@@ -13,14 +13,17 @@
  */
 #}
 
-{% import "_includes/forms" as forms %}
+{#{% js assets.js %}#}
+{#{% css assets.css %}#}
 
-{% do view.registerAssetBundle("wbrowar\\littlelayout\\assetbundles\\littlelayout\\LittleLayoutAsset") %}
+<div
+  data-little-layout="{{ namespacedId }}"
+  data-field-type="settings"
+  data-cols="{{ field.cols }}"
+  data-default-value="{{ field.defaultValue }}"
+  data-rows="{{ field.rows }}"
+></div>
 
-{{ forms.textField({
-    label: 'Some Attribute',
-    instructions: 'Enter some attribute here.',
-    id: 'someAttribute',
-    name: 'someAttribute',
-    value: field['someAttribute']})
-}}
+<input data-little-layout-placeholder="{{ namespacedId }}" type="hidden" name="defaultValue" autofocus="" autocomplete="off" value="{{ field.defaultValue }}">
+
+{% do craft.app.view.registerJs(registerJs) %}

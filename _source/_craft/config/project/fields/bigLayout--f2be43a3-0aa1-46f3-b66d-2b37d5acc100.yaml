@@ -1,0 +1,12 @@
+contentColumnType: string
+fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f # Beer
+handle: bigLayout
+instructions: ''
+name: 'Big Layout'
+searchable: false
+settings:
+  cols: '30'
+  rows: '4'
+translationKeyFormat: null
+translationMethod: none
+type: wbrowar\littlelayout\fields\Layout

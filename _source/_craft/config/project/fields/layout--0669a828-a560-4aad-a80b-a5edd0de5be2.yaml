@@ -1,0 +1,13 @@
+contentColumnType: text
+fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f # Beer
+handle: layout
+instructions: 'This is the layout for this page.'
+name: Layout
+searchable: false
+settings:
+  cols: '6'
+  defaultValue: ''
+  rows: '3'
+translationKeyFormat: null
+translationMethod: none
+type: wbrowar\littlelayout\fields\Layout
