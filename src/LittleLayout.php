@@ -13,6 +13,7 @@ namespace wbrowar\littlelayout;
 use craft\events\RegisterGqlTypesEvent;
 use craft\helpers\Json;
 use craft\services\Gql;
+use craft\web\View;
 use wbrowar\littlelayout\fields\Layout as LayoutField;
 
 use Craft;
@@ -82,13 +83,15 @@ class LittleLayout extends Plugin
             $event->types[] = LittleLayoutType::class;
         });
 
-        $assets = LittleLayout::$plugin->getPathsToAssetFiles('little-layout.ts');
+        if (Craft::$app->getView()->getTemplateMode() === View::TEMPLATE_MODE_CP) {
+            $assets = LittleLayout::$plugin->getPathsToAssetFiles('little-layout.ts');
 
-        if ($assets['css'] ?? false) {
-            Craft::$app->getView()->registerCssFile($assets['css']);
-        }
-        if ($assets['js'] ?? false) {
-            Craft::$app->getView()->registerJsFile($assets['js'], ['position' => Craft::$app->getView()::POS_BEGIN, 'type' => 'module']);
+            if ($assets['css'] ?? false) {
+                Craft::$app->getView()->registerCssFile($assets['css']);
+            }
+            if ($assets['js'] ?? false) {
+                Craft::$app->getView()->registerJsFile($assets['js'], ['position' => Craft::$app->getView()::POS_BEGIN, 'type' => 'module']);
+            }
         }
 
         Craft::info(

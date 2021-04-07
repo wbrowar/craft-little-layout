@@ -33,22 +33,22 @@ class Layout extends Field
     /**
      * @var int
      */
-    public int $clearable = 1;
+    public $clearable = 1;
 
     /**
      * @var int
      */
-    public int $cols = 1;
+    public $cols = 1;
 
     /**
      * @var string
      */
-    public string $defaultValue = '';
+    public $defaultValue = '';
 
     /**
      * @var int
      */
-    public int $rows = 1;
+    public $rows = 1;
 
     // Static Methods
     // =========================================================================

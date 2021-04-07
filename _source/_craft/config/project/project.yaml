@@ -1,4 +1,4 @@
-dateModified: 1616260982
+dateModified: 1617762215
 email:
   fromEmail: email@example.com
   fromName: 'Craft Plugin'
@@ -11,6 +11,7 @@ plugins:
   little-layout:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_LICENSE_KEY
     schemaVersion: 1.0.0
 system:
   edition: pro

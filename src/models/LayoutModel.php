@@ -25,7 +25,7 @@ class LayoutModel extends Model
     /**
      * @var string
      */
-    public string $raw = '';
+    public $raw = '';
 
     // Public Methods
     // =========================================================================
