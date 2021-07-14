@@ -1,6 +1,6 @@
 {
     "require": {
-        "craftcms/cms": "3.6.10",
+        "craftcms/cms": "3.7.0",
         "vlucas/phpdotenv": "^3.4.0",
         "mmikkel/cp-field-inspect": "^1.2.4",
         "wbrowar/craft-little-layout": "@dev"

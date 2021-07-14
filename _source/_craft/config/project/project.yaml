@@ -1,8 +1,22 @@
-dateModified: 1617762215
+dateModified: 1626272661
 email:
   fromEmail: email@example.com
   fromName: 'Craft Plugin'
   transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    48ba205e-23f2-4061-baf9-1b2323971135: 'Public Schema' # Public Schema
+    283e606d-1524-4391-80d3-3480252f555c: 'Vertical Align' # Vertical Align
+    649d744b-d6ae-4e90-a0c5-0e022ce2e0a5: 'Product Name' # Product Name
+    0669a828-a560-4aad-a80b-a5edd0de5be2: Layout # Layout
+    6309a141-3408-4e4b-9d78-83bb6b2ce0c8: 'Featured Products' # Featured Products
+    481314f7-2aaa-4510-9a7d-220e660a4916: 'Product Name' # Product Name
+    a68b5677-d0e2-4551-8522-0d5bdefea17b: 'Tall Layout' # Tall Layout
+    b92add05-aaf4-4a80-afa2-39aba52c1f5a: 'Text Align' # Text Align
+    bf477a41-bcac-4b0a-97ac-ab68423b4bf0: Products # Products
+    c8421b67-8b75-4524-a993-69af8adfe49f: Beer # Beer
+    f2be43a3-0aa1-46f3-b66d-2b37d5acc100: 'Big Layout' # Big Layout
+    fcb15b2b-1d74-44ef-9818-130ca586ebc0: Layout # Layout
 plugins:
   cp-field-inspect:
     edition: standard
@@ -17,7 +31,7 @@ system:
   edition: pro
   live: true
   name: 'Craft Plugin'
-  schemaVersion: 3.6.6
+  schemaVersion: 3.7.7
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

@@ -38,6 +38,20 @@
           </div>
         </div>
       </div>
+
+      <div id="selection-mode-field" class="field">
+        <div class="heading">
+          <label id="selection-mode-label" for="selection-mode">Selection Mode</label>
+        </div>
+        <div class="input ltr">
+          <div class="select">
+            <select id="selection-mode" :name="`${ field.fieldNamespace }[selectionMode]`" v-model="settingsSelectionMode">
+              <option value="box">Select multiple rows and columns</option>
+              <option value="single">Select a single box</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div>
@@ -56,6 +70,7 @@
               field-name="defaultValue"
               :layout-cols="settingsCols"
               :layout-rows="settingsRows"
+              :selection-mode="settingsSelectionMode"
               v-if="settingsCols && settingsRows"
           />
           <p v-else>⚠️ Settings missing! Layout Columns and Layout Rows settings are required.</p>
@@ -74,13 +89,14 @@ export default defineComponent({
   components: {
     LittleLayoutFieldControl,
   },
-  props: ['clearable', 'cols', 'defaultValue', 'field', 'rows'],
+  props: ['clearable', 'cols', 'defaultValue', 'field', 'rows', 'selectionMode'],
   setup: (props) => {
     const settingsClearable = ref(props.clearable);
     const settingsCols = ref(props.cols ? parseInt(props.cols) : 1);
     const settingsRows = ref(props.rows ? parseInt(props.rows) : 1);
+    const settingsSelectionMode = ref(props.selectionMode);
 
-    return { settingsClearable, settingsCols, settingsRows }
+    return { settingsClearable, settingsCols, settingsRows, settingsSelectionMode }
   },
   methods: {
     validateColsField() {

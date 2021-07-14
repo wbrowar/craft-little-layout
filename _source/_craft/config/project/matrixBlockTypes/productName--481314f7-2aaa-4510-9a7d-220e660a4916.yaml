@@ -44,6 +44,7 @@ fieldLayouts:
         sortOrder: 1
 fields:
   283e606d-1524-4391-80d3-3480252f555c: # Vertical Align
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: verticalAlign
@@ -51,14 +52,16 @@ fields:
     name: 'Vertical Align'
     searchable: false
     settings:
-      clearable: 1
-      cols: 1
+      clearable: '1'
+      cols: '1'
       defaultValue: ''
-      rows: 3
+      rows: '3'
+      selectionMode: single
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout
   649d744b-d6ae-4e90-a0c5-0e022ce2e0a5: # Product Name
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: productName
@@ -78,6 +81,7 @@ fields:
     translationMethod: none
     type: craft\fields\PlainText
   b92add05-aaf4-4a80-afa2-39aba52c1f5a: # Text Align
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: textAlign
@@ -85,14 +89,16 @@ fields:
     name: 'Text Align'
     searchable: false
     settings:
-      clearable: 2
-      cols: 3
+      clearable: '2'
+      cols: '3'
       defaultValue: 1|1|1|1
-      rows: 1
+      rows: '1'
+      selectionMode: single
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout
   fcb15b2b-1d74-44ef-9818-130ca586ebc0: # Layout
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: layout
@@ -100,10 +106,11 @@ fields:
     name: Layout
     searchable: false
     settings:
-      clearable: 2
-      cols: 6
+      clearable: '2'
+      cols: '6'
       defaultValue: 1|6|1|1
-      rows: 1
+      rows: '1'
+      selectionMode: box
     translationKeyFormat: null
     translationMethod: none
     type: wbrowar\littlelayout\fields\Layout

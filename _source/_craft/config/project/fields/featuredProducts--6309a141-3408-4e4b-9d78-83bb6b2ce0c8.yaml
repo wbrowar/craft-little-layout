@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: c8421b67-8b75-4524-a993-69af8adfe49f # Beer
 handle: featuredProducts
@@ -8,6 +9,7 @@ settings:
   contentTable: '{{%matrixcontent_featuredproducts}}'
   maxBlocks: ''
   minBlocks: ''
+  propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site

@@ -50,6 +50,11 @@ class Layout extends Field
      */
     public $rows = 1;
 
+    /**
+     * @var int
+     */
+    public $selectionMode = 'box';
+
     // Static Methods
     // =========================================================================
 
@@ -81,8 +86,9 @@ class Layout extends Field
         $rules = array_merge($rules, [
             [['clearable', 'cols', 'rows'], 'integer'],
             [['clearable', 'cols', 'rows'], 'default', 'value' => 1],
-            ['defaultValue', 'string'],
+            [['defaultValue', 'selectionMode'], 'string'],
             ['defaultValue', 'default', 'value' => ''],
+            ['selectionMode', 'default', 'value' => 'box'],
         ]);
         return $rules;
     }

@@ -33,20 +33,15 @@ import {defineComponent, ref} from 'vue'
 export default defineComponent({
   name: 'LittleLayoutFieldControl',
   props: {
-    clearable: {
-      type: Boolean,
-      default: false,
-    },
-    editable: {
-      type: Boolean,
-      default: false,
-    },
+    clearable: { type: Boolean, default: false },
+    editable: { type: Boolean, default: false },
     fieldNamespace: String,
     fieldDefault: String,
     fieldId: String,
     fieldName: String,
     layoutCols: Number,
     layoutRows: Number,
+    selectionMode: { type: String, default: 'box' },
     scrollMessage: String,
   },
   setup: (props) => {
@@ -91,12 +86,16 @@ export default defineComponent({
     selectedBoxes() {
       const selected = [];
 
-      if (this.xStart && this.yStart && this.xEnd && this.yEnd) {
-        for (let x = this.xStart; x < (this.xEnd + 1); x++) {
-          for (let y = this.yStart; y < (this.yEnd + 1); y++) {
-            selected.push(`${x}|${y}`);
+      if (this.selectionMode === 'box') {
+        if (this.xStart && this.yStart && this.xEnd && this.yEnd) {
+          for (let x = this.xStart; x < (this.xEnd + 1); x++) {
+            for (let y = this.yStart; y < (this.yEnd + 1); y++) {
+              selected.push(`${x}|${y}`);
+            }
           }
         }
+      } else if (this.selectionMode === 'single') {
+        selected.push(`${this.xStart}|${this.yStart}`);
       }
 
       return selected;
@@ -109,16 +108,19 @@ export default defineComponent({
       if (this.status === 'idle') {
         this.xStart = this.xEnd = x;
         this.yStart = this.yEnd = y;
-        this.timer = setInterval(() => {
-          const newEl = this.$refs[`${ x }|${ y }`];
 
-          if (newEl) {
-            newEl.blur();
-          }
+        if (this.selectionMode === 'box') {
+          this.timer = setInterval(() => {
+            const newEl = this.$refs[`${ x }|${ y }`];
 
-          this.status = 'idle';
-        }, 10000);
-        this.status = 'inputStarted';
+            if (newEl) {
+              newEl.blur();
+            }
+
+            this.status = 'idle';
+          }, 10000);
+          this.status = 'inputStarted';
+        }
       } else if (this.status === 'inputStarted') {
         if (x < this.xStart) {
           this.xEnd = this.xStart;

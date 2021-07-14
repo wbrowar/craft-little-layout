@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a37dc9759d84f06c5ad2fc747a57e2e",
+    "content-hash": "2935a83290304d50109f0fb8c1db6a75",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -2035,63 +2035,6 @@
             "time": "2021-03-17T06:54:33+00:00"
         },
         {
-            "name": "mmikkel/cp-field-inspect",
-            "version": "1.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mmikkel/CpFieldInspect-Craft.git",
-                "reference": "14a717338cf5f019a4d37f086f0123e07970ebe0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mmikkel/CpFieldInspect-Craft/zipball/14a717338cf5f019a4d37f086f0123e07970ebe0",
-                "reference": "14a717338cf5f019a4d37f086f0123e07970ebe0",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^3.5.10"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "CP Field Inspect",
-                "handle": "cp-field-inspect",
-                "schemaVersion": "1.0.0",
-                "hasCpSettings": false,
-                "hasCpSection": false,
-                "changelogUrl": "https://raw.githubusercontent.com/mmikkel/CpFieldInspect-Craft/master/CHANGELOG.md",
-                "class": "mmikkel\\cpfieldinspect\\CpFieldInspect"
-            },
-            "autoload": {
-                "psr-4": {
-                    "mmikkel\\cpfieldinspect\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mats Mikkel Rummelhoff",
-                    "homepage": "http://mmikkel.no"
-                }
-            ],
-            "description": "Inspect field handles and easily edit field and element source settings",
-            "keywords": [
-                "Craft",
-                "cms",
-                "cp field inspect",
-                "craft-plugin",
-                "craftcms"
-            ],
-            "support": {
-                "docs": "https://github.com/mmikkel/CpFieldInspect-Craft/blob/master/README.md",
-                "issues": "https://github.com/mmikkel/CpFieldInspect-Craft/issues",
-                "source": "https://github.com/mmikkel/CpFieldInspect-Craft/tree/1.2.5"
-            },
-            "time": "2021-05-17T19:58:15+00:00"
-        },
-        {
             "name": "opis/closure",
             "version": "3.6.2",
             "source": {
@@ -2363,75 +2306,6 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.4.0"
             },
             "time": "2020-09-17T18:55:26+00:00"
-        },
-        {
-            "name": "phpoption/phpoption",
-            "version": "1.7.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/994ecccd8f3283ecf5ac33254543eb0ac946d525",
-                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
-                "phpunit/phpunit": "^4.8.35 || ^5.7.27 || ^6.5.6 || ^7.0 || ^8.0 || ^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpOption\\": "src/PhpOption/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                },
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "Option Type for PHP",
-            "keywords": [
-                "language",
-                "option",
-                "php",
-                "type"
-            ],
-            "support": {
-                "issues": "https://github.com/schmittjoh/php-option/issues",
-                "source": "https://github.com/schmittjoh/php-option/tree/1.7.5"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-07-20T17:29:33+00:00"
         },
         {
             "name": "pixelandtonic/imagine",
@@ -4533,83 +4407,6 @@
             "time": "2021-05-16T12:12:47+00:00"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v3.6.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "5e679f7616db829358341e2d5cccbd18773bdab8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/5e679f7616db829358341e2d5cccbd18773bdab8",
-                "reference": "5e679f7616db829358341e2d5cccbd18773bdab8",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4 || ^7.0 || ^8.0",
-                "phpoption/phpoption": "^1.5.2",
-                "symfony/polyfill-ctype": "^1.17"
-            },
-            "require-dev": {
-                "ext-filter": "*",
-                "ext-pcre": "*",
-                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20"
-            },
-            "suggest": {
-                "ext-filter": "Required to use the boolean validator.",
-                "ext-pcre": "Required to use most of the library."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com",
-                    "homepage": "https://gjcampbell.co.uk/"
-                },
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "https://vancelucas.com/"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "support": {
-                "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v3.6.8"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2021-01-20T14:39:46+00:00"
-        },
-        {
             "name": "voku/anti-xss",
             "version": "4.1.32",
             "source": {
@@ -5229,65 +5026,6 @@
                 "source": "https://github.com/voku/urlify/tree/master"
             },
             "time": "2019-12-13T02:57:54+00:00"
-        },
-        {
-            "name": "wbrowar/craft-little-layout",
-            "version": "1.0.1",
-            "dist": {
-                "type": "path",
-                "url": "/var/www/html/.assembly-cache/setup/plugin",
-                "reference": "e260a84f8c83014e115275b35edd20a3232446eb"
-            },
-            "require": {
-                "craftcms/cms": "^3.6.18"
-            },
-            "require-dev": {
-                "vlucas/phpdotenv": "^3.0"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "Little Layout",
-                "handle": "little-layout",
-                "developer": "Will Browar",
-                "developerUrl": "https://wbrowar.com",
-                "documentationUrl": "https://github.com/wbrowar/craft-little-layout/blob/main/README.md",
-                "changelogUrl": "https://github.com/wbrowar/craft-little-layout/blob/main/CHANGELOG.md",
-                "class": "wbrowar\\littlelayout\\LittleLayout"
-            },
-            "autoload": {
-                "psr-4": {
-                    "wbrowar\\littlelayout\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Will Browar",
-                    "homepage": "https://wbrowar.com"
-                }
-            ],
-            "description": "A compact, visual way to lay out fields, elements, and Matrix blocks.",
-            "keywords": [
-                "align",
-                "cms",
-                "craft",
-                "craft-plugin",
-                "craftcms",
-                "css grid",
-                "feild",
-                "layout",
-                "little layout",
-                "templating"
-            ],
-            "support": {
-                "docs": "https://github.com/wbrowar/craft-little-layout/blob/main/README.md",
-                "issues": "https://github.com/wbrowar/craft-little-layout/issues"
-            },
-            "transport-options": {
-                "relative": false
-            }
         },
         {
             "name": "webmozart/assert",
@@ -5923,18 +5661,160 @@
             "time": "2018-09-23T22:00:47+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "phpoption/phpoption",
+            "version": "1.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/php-option.git",
+                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/994ecccd8f3283ecf5ac33254543eb0ac946d525",
+                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4.1",
+                "phpunit/phpunit": "^4.8.35 || ^5.7.27 || ^6.5.6 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpOption\\": "src/PhpOption/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Option Type for PHP",
+            "keywords": [
+                "language",
+                "option",
+                "php",
+                "type"
+            ],
+            "support": {
+                "issues": "https://github.com/schmittjoh/php-option/issues",
+                "source": "https://github.com/schmittjoh/php-option/tree/1.7.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-20T17:29:33+00:00"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v3.6.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "5e679f7616db829358341e2d5cccbd18773bdab8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/5e679f7616db829358341e2d5cccbd18773bdab8",
+                "reference": "5e679f7616db829358341e2d5cccbd18773bdab8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0 || ^8.0",
+                "phpoption/phpoption": "^1.5.2",
+                "symfony/polyfill-ctype": "^1.17"
+            },
+            "require-dev": {
+                "ext-filter": "*",
+                "ext-pcre": "*",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20"
+            },
+            "suggest": {
+                "ext-filter": "Required to use the boolean validator.",
+                "ext-pcre": "Required to use most of the library."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "homepage": "https://gjcampbell.co.uk/"
+                },
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "https://vancelucas.com/"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "support": {
+                "issues": "https://github.com/vlucas/phpdotenv/issues",
+                "source": "https://github.com/vlucas/phpdotenv/tree/v3.6.8"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-01-20T14:39:46+00:00"
+        }
+    ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "wbrowar/craft-little-layout": 20
-    },
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "platform-overrides": {
-        "php": "8.0"
-    },
     "plugin-api-version": "2.0.0"
 }
