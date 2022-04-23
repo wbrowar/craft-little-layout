@@ -1,7 +1,0 @@
-isPublic: true
-name: 'Public Schema'
-scope:
-  - 'sections.2c1c8945-6af0-4a7a-a75f-6b5ede2f8919:read'
-  - 'entrytypes.9235fe32-0e30-448b-b762-6ffbb0e4dee7:read'
-  - 'sections.f7e1c238-5540-41fb-90d6-535844c622fb:read'
-  - 'entrytypes.bf477a41-bcac-4b0a-97ac-ab68423b4bf0:read' # Products
