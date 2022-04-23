@@ -119,8 +119,8 @@ class LittleLayout extends Plugin
 
         if (Craft::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
             return [
-                'css' => 'http://localhost:3000/_source/_css/app.css',
-                'js' => 'http://localhost:3000/' . $filename,
+                'css' => 'http://localhost:3100/_source/_css/app.css',
+                'js' => 'http://localhost:3100/' . $filename,
             ];
         }
 
