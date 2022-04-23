@@ -80,7 +80,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
         $rules = array_merge($rules, [
@@ -96,7 +96,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getContentColumnType(): string
+    public function getContentColumnType()
     {
         return Schema::TYPE_TEXT;
     }
@@ -112,7 +112,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml():string
+    public function getSettingsHtml():?string
     {
         // Add our field JS
         $fieldProperties = $this->_getFieldProperties();
@@ -140,7 +140,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml($value, ElementInterface $element = null, $editable = true): string
+    public function getInputHtml($value, ?\craft\base\ElementInterface $element = null, $editable = true): string
     {
         // Add our field JS
         $fieldProperties = $this->_getFieldProperties();
@@ -172,7 +172,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null)
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
@@ -191,7 +191,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue($value, ?\craft\base\ElementInterface $element = null)
     {
         return parent::serializeValue($value, $element);
     }

@@ -33,7 +33,7 @@ class LayoutModel extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             ['raw', 'string'],
