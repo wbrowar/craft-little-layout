@@ -1,10 +1,10 @@
-# Little Layout plugin for Craft CMS 3.x
+# Little Layout plugin for Craft CMS 4.x
 
 A compact, visual way to lay out fields, elements, and Matrix blocks.
 
 ## Requirements
 
-This plugin requires Craft CMS 3.6 or later.
+This plugin requires Craft CMS 4.0 or later.
 
 ## Installation
 
@@ -108,7 +108,7 @@ If you use a CSS framework, like Tailwind CSS, you could do something like this:
 <div class="col-start-{{ element.fieldHandle.gridColumnStart }} col-span-{{ element.fieldHandle.gridColumnSpan }} row-start-{{ element.fieldHandle.gridRowStart }} row-span-{{ element.fieldHandle.gridRowSpan }}"></div>
 ```
 
-While that could work, if you use Tailwind’s PurgeCSS feature, you may prefer to preserve full class names using logic and a lookup table:
+If your Twig template files are included in your Tailwind confguration’s `content` patterns, you may prefer to preserve full class names using logic and a lookup table:
 
 ```twig
 {% set columnStartClasses = {
@@ -213,19 +213,6 @@ Then on the front-end, (assuming LTR reading order in this case), you can do som
 ```
 
 In this case `element.fieldHandle.selectedColumns` gives us an array with the numbers `1`, `2`, or `3` as the value.
-
-## Contributing
-
-The repo for this plugin includes config files that can be used to test and build the front-end assets for this plugin. _(NOTE: [DDEV-local](https://ddev.readthedocs.io/en/stable/) is required to spin up and run the full testing environment)_
-
-To contribute a PR to this project please do the following:
-
-1. In the repo root directory, run `ddev start`. This should install Composer in the `_source/_craft/` directory, a fresh Craft install, and NPM in the `_source/_assets/` directory.
-1. Find the `_source/_craft/.env` file and change the value of `PLUGIN_HMR` to `true` _(NOTE: this needs to be set back to `false` before submitting a PR)_
-1. Run `ddev npm run dev` to start up a Vite web server.
-1. Log into the local CMS at `https://craft-little-layout.test/admin`, using credentials installed during `ddev start` and make code changes.
-1. Return the `_source/_craft/.env` variable, `PLUGIN_HMR`, to `true` false and run `ddev npm run prod` to perform a Vite build.
-1. Submit PR to [GitHub repo.](https://github.com/wbrowar/craft-little-layout/pulls)
 
 ---
 
