@@ -11,6 +11,7 @@
 namespace wbrowar\littlelayout;
 
 use craft\events\RegisterGqlTypesEvent;
+use craft\helpers\App;
 use craft\helpers\Json;
 use craft\services\Gql;
 use craft\web\View;
@@ -117,7 +118,7 @@ class LittleLayout extends Plugin
             'js' => '',
         ];
 
-        if (Craft::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
+        if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
             return [
                 'css' => 'http://localhost:3100/_source/_css/app.css',
                 'js' => 'http://localhost:3100/' . $filename,

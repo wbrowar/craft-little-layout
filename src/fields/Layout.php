@@ -15,6 +15,7 @@ use craft\helpers\Html;
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
+use GraphQL\Type\Definition\Type;
 use wbrowar\littlelayout\gql\types\LittleLayoutType;
 use wbrowar\littlelayout\models\LayoutModel;
 use yii\db\Schema;
@@ -96,7 +97,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getContentColumnType()
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_TEXT;
     }
@@ -104,7 +105,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getContentGqlType()
+    public function getContentGqlType(): Type|array
     {
         return LittleLayoutType::getType();
     }
@@ -172,7 +173,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null)
+    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null): mixed
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
@@ -182,7 +183,7 @@ class Layout extends Field
         } elseif ($value instanceof LayoutModel) {
             $model = $value;
         } else {
-            $model = new LayoutModel(null);
+            $model = new LayoutModel([]);
         }
 
         return $model;
@@ -191,7 +192,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ?\craft\base\ElementInterface $element = null)
+    public function serializeValue($value, ?\craft\base\ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }
