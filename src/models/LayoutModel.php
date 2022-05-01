@@ -58,7 +58,7 @@ class LayoutModel extends Model
      */
     public function getGridColumnStart()
     {
-        return ($this->_value() ?? false) ? $this->_value()['xStart'] : null;
+        return ($this->parsedValue() ?? false) ? $this->parsedValue()['xStart'] : null;
     }
 
     /**
@@ -68,7 +68,7 @@ class LayoutModel extends Model
      */
     public function getGridColumnEnd()
     {
-        return ($this->_value() ?? false) ? $this->_value()['xEnd'] + 1 : null;
+        return ($this->parsedValue() ?? false) ? $this->parsedValue()['xEnd'] + 1 : null;
     }
 
     /**
@@ -78,7 +78,7 @@ class LayoutModel extends Model
      */
     public function getGridRowStart()
     {
-        return ($this->_value() ?? false) ? $this->_value()['yStart'] : null;
+        return ($this->parsedValue() ?? false) ? $this->parsedValue()['yStart'] : null;
     }
 
     /**
@@ -88,7 +88,7 @@ class LayoutModel extends Model
      */
     public function getGridRowEnd()
     {
-        return ($this->_value() ?? false) ? $this->_value()['yEnd'] + 1 : null;
+        return ($this->parsedValue() ?? false) ? $this->parsedValue()['yEnd'] + 1 : null;
     }
 
     /**
@@ -98,7 +98,7 @@ class LayoutModel extends Model
      */
     public function getGridColumnSpan()
     {
-        return ($this->_value() ?? false) ? ($this->_value()['xEnd'] - $this->_value()['xStart']) + 1 : null;
+        return ($this->parsedValue() ?? false) ? ($this->parsedValue()['xEnd'] - $this->parsedValue()['xStart']) + 1 : null;
     }
 
     /**
@@ -108,7 +108,7 @@ class LayoutModel extends Model
      */
     public function getGridRowSpan()
     {
-        return ($this->_value() ?? false) ? ($this->_value()['yEnd'] - $this->_value()['yStart']) + 1 : null;
+        return ($this->parsedValue() ?? false) ? ($this->parsedValue()['yEnd'] - $this->parsedValue()['yStart']) + 1 : null;
     }
 
     /**
@@ -118,10 +118,10 @@ class LayoutModel extends Model
      */
     public function getSelectedColumns():array
     {
-        if ($this->_value()) {
+        if ($this->parsedValue()) {
             $selectedColumns = [];
 
-            foreach (range($this->_value()['xStart'], $this->_value()['xEnd']) as $number) {
+            foreach (range($this->parsedValue()['xStart'], $this->parsedValue()['xEnd']) as $number) {
                 $selectedColumns[] = $number;
             }
 
@@ -138,10 +138,10 @@ class LayoutModel extends Model
      */
     public function getSelectedRows():array
     {
-        if ($this->_value()) {
+        if ($this->parsedValue()) {
             $selectedRows = [];
 
-            foreach (range($this->_value()['yStart'], $this->_value()['yEnd']) as $number) {
+            foreach (range($this->parsedValue()['yStart'], $this->parsedValue()['yEnd']) as $number) {
                 $selectedRows[] = $number;
             }
 
@@ -159,11 +159,11 @@ class LayoutModel extends Model
      */
     public function getSelectedCoordinates():array
     {
-        if ($this->_value()) {
+        if ($this->parsedValue()) {
             $selectedCoordinates = [];
 
-            foreach (range($this->_value()['xStart'], $this->_value()['xEnd']) as $col) {
-                foreach (range($this->_value()['yStart'], $this->_value()['yEnd']) as $row) {
+            foreach (range($this->parsedValue()['xStart'], $this->parsedValue()['xEnd']) as $col) {
+                foreach (range($this->parsedValue()['yStart'], $this->parsedValue()['yEnd']) as $row) {
                     $selectedCoordinates[] = $col . '|' . $row;
                 }
             }
@@ -182,7 +182,7 @@ class LayoutModel extends Model
      *
      * @return null|array
      */
-    public function _value()
+    public function parsedValue()
     {
         if (!$this->getEmpty()) {
             $parsed = explode('|', $this->raw);

@@ -116,7 +116,7 @@ class Layout extends Field
     public function getSettingsHtml():?string
     {
         // Add our field JS
-        $fieldProperties = $this->_getFieldProperties();
+        $fieldProperties = $this->getFieldProperties();
 
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
@@ -144,7 +144,7 @@ class Layout extends Field
     public function getInputHtml($value, ?\craft\base\ElementInterface $element = null, $editable = true): string
     {
         // Add our field JS
-        $fieldProperties = $this->_getFieldProperties();
+        $fieldProperties = $this->getFieldProperties();
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
@@ -203,7 +203,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    private function _getFieldProperties(): array
+    private function getFieldProperties(): array
     {
 //        Craft::dd($this);
         
