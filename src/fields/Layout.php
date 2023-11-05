@@ -124,6 +124,7 @@ class Layout extends Field
             [
                 'name' => $fieldProperties['jsVars']['fieldNamespace'],
                 'field' => $this,
+                'fieldNamespacedName' => $fieldProperties['fieldNamespacedName'] ?? '',
                 'namespacedId' => $fieldProperties['namespacedId'],
                 'registerJs' => $fieldProperties['registerJs'],
             ]
@@ -205,8 +206,6 @@ class Layout extends Field
      */
     private function getFieldProperties(): array
     {
-//        Craft::dd($this);
-        
         // Get our id and namespace
         $id = Html::id($this->handle ?? '');
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);

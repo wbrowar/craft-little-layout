@@ -24,7 +24,7 @@
       </div>
     </div>
     <p class="ll-mt-1 ll-mb-0 ll-text-sm ll-text-light" v-if="showScrollMessage">{{ scrollMessage }}</p>
-    <input type="hidden" :id="fieldId" :name="fullFieldName" autofocus="" autocomplete="off" :value="fieldValue" v-if="valueUpdated && fieldId && fullFieldName">
+    <input type="hidden" :id="fieldId" :name="fullFieldName" autocomplete="off" :value="fieldValue" v-if="valueUpdated && fieldId && fullFieldName">
   </div>
 </template>
 
@@ -46,7 +46,6 @@ export default defineComponent({
   },
   setup: (props) => {
     const defaultValue = props.fieldDefault ? props.fieldDefault.split('|') : [];
-
     const handleResize = ref();
     const showScrollMessage = ref(false);
     const status = ref('idle');

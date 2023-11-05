@@ -1,6 +1,6 @@
 module.exports = {
+  content: ['./components/**/*.{vue,js,ts}'],
   prefix: 'll-',
-  purge: ['./components/**/*.{vue,js,ts}'],
   theme: {
     colors: {
       primary: '#E12D39',

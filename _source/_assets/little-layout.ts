@@ -11,14 +11,25 @@
  * @since     1.0.0LittleLayoutLayout
  */
 
-import 'vite/dynamic-import-polyfill';
 import { createApp } from 'vue';
-import LittleLayoutField from './components/LittleLayoutField.vue';
-import LittleLayoutSettings from './components/LittleLayoutSettings.vue';
+import { log } from "./utils/console";
+import { LittleLayoutField } from './components/LittleLayoutField'
+import { LittleLayoutFieldControl } from './components/LittleLayoutFieldControl';
 import './global.css';
 
-;(function ( $, window, document, undefined ) {
+import LittleLayoutFieldVue from './components/LittleLayoutField.vue';
+import LittleLayoutSettingsVue from './components/LittleLayoutSettings.vue';
 
+if (!customElements.get('little-layout-field')) {
+    customElements.define('little-layout-field', LittleLayoutField);
+    log('Little Layout: web component registered');
+}
+if (!customElements.get('little-layout-field-control')) {
+    customElements.define('little-layout-field-control', LittleLayoutFieldControl);
+    log('Little Layout Control: web component registered');
+}
+
+;(function ( $, window, document, undefined ) {
     var pluginName = "LittleLayout",
         defaults = {
         };
@@ -36,7 +47,6 @@ import './global.css';
     }
 
     Plugin.prototype = {
-
         init: function(id) {
             const _this = this;
 
@@ -44,9 +54,9 @@ import './global.css';
 
                 const app = document.querySelector(`[data-little-layout="${ _this.options.namespacedId }"]`);
                 if (app?.dataset?.fieldType === 'input') {
-                    createApp(LittleLayoutField, { field: _this.options, ...app.dataset }).mount(app);
+                    createApp(LittleLayoutFieldVue, { field: _this.options, ...app.dataset }).mount(app);
                 } else if (app?.dataset?.fieldType === 'settings') {
-                    createApp(LittleLayoutSettings, { field: _this.options, ...app.dataset }).mount(app);
+                    createApp(LittleLayoutSettingsVue, { field: _this.options, ...app.dataset }).mount(app);
                 }
             });
         }

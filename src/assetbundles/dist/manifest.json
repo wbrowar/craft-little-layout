@@ -1,16 +1,14 @@
 {
-  "little-layout.ts": {
-    "file": "assets/little-layout.b5647815.js",
-    "src": "little-layout.ts",
-    "isEntry": true,
-    "imports": [
-      "_vendor.baa867cf.js"
-    ],
-    "css": [
-      "assets/little-layout.1c2192e8.css"
-    ]
+  "little-layout.css": {
+    "file": "assets/little-layout-5a0a7f4b.css",
+    "src": "little-layout.css"
   },
-  "_vendor.baa867cf.js": {
-    "file": "assets/vendor.baa867cf.js"
+  "little-layout.ts": {
+    "css": [
+      "assets/little-layout-5a0a7f4b.css"
+    ],
+    "file": "assets/little-layout-9f285def.js",
+    "isEntry": true,
+    "src": "little-layout.ts"
   }
 }

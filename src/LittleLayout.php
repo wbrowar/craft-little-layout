@@ -120,7 +120,6 @@ class LittleLayout extends Plugin
 
         if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
             return [
-                'css' => 'http://localhost:3100/_source/_css/app.css',
                 'js' => 'http://localhost:3100/' . $filename,
             ];
         }
