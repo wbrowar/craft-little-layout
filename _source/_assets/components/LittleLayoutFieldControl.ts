@@ -20,10 +20,6 @@ export class LittleLayoutFieldControl extends LitElement {
         grid-template-columns: min-content minmax(0, 1fr);
         gap: .3rem;
         align-items: center;
-
-        &.field-large {
-          --layout-box-size: 43px;
-        }
       }
 
       .layout-boxes {
@@ -385,7 +381,7 @@ export class LittleLayoutFieldControl extends LitElement {
                     </div>
                     <div>
                         ${this.clearable && this.editable && this._hasSelected ? html`<button type="button" class="clear-button" title="Clear" aria-label="Clear" @click="${this._clearButtonClicked}">
-                            <slot name="clear-btn"></slot>
+                            <slot name="clear-icon"></slot>
                         </button>` : nothing}
                     </div>
                 </div>

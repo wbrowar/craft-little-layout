@@ -20,10 +20,13 @@ import './global.css';
 import LittleLayoutFieldVue from './components/LittleLayoutField.vue';
 import LittleLayoutSettingsVue from './components/LittleLayoutSettings.vue';
 
+// Register light DOM field component that includes input element for the page.
 if (!customElements.get('little-layout-field')) {
     customElements.define('little-layout-field', LittleLayoutField);
     log('Little Layout: web component registered');
 }
+
+// Register shared layout component (including layout boxes).
 if (!customElements.get('little-layout-field-control')) {
     customElements.define('little-layout-field-control', LittleLayoutFieldControl);
     log('Little Layout Control: web component registered');

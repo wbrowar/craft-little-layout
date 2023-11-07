@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.3.0.beta.0 - 2022-11-05
+## 1.3.0 - 2022-11-07
 ### Changed
 - Improved performance by refactoring Little Layout field from a Vue app to a Web Component.
+- Changed layout boxes in field from clickable div elements to buttons.
 - Updated JS bundler to Vite 4.x.
 - Updated Tailwind to Tailwind 3.x.
 - Bumped NodeJS to Node 18.x.

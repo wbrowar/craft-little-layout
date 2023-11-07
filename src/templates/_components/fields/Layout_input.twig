@@ -22,14 +22,12 @@
 
 <little-layout-field
     {{ clearable ? 'clearable="true"' : '' }}
-    {{ editable ? 'editable="true"' : '' }}
     default-value="{{ startingValue }}"
+    {{ editable ? 'editable="true"' : '' }}
     field-id="{{ namespacedId }}"
     field-name="{{ fieldNamespacedName }}"
-    field-type="input"
     layout-cols="{{ field.cols }}"
     layout-rows="{{ field.rows }}"
-    scroll-message="{{ ('Scroll horizontally to see more layout values.')|t }}"
     selection-mode="{{ field.selectionMode }}"
 ></little-layout-field>
 

@@ -105,7 +105,7 @@ export class LittleLayoutField extends LitElement {
             selection-mode="${ this.selectionMode }"
             @value-updated="${this._fieldValueListener}"
           >
-              <span slot="clear-btn" class="delete icon"></span>
+              <span slot="clear-icon" class="delete icon"></span>
           </little-layout-field-control>
           <input type="hidden" id="${this.fieldId}" name="${this.fieldName}[raw]" autocomplete="off" value="${this._fieldValue}">
         `;
