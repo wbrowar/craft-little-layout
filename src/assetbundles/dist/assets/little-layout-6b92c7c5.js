@@ -136,6 +136,13 @@ function D(...o){}function dt(...o){}/**
       &.layout-box--selected {
         --background-color: var(--medium-dark-text-color);
       }
+
+      &.layout-box--editable.layout-box--selected {
+        &:hover,
+        &:focus {
+          --background-color: color-mix(in srgb, var(--primary-color) 90%, var(--medium-dark-text-color) 30%);
+        }
+      }
     }
 
     .clear-button {
@@ -168,4 +175,4 @@ function D(...o){}function dt(...o){}/**
         autocomplete="off"
         value="${this._defaultValue}"
       />
-    `}createRenderRoot(){return this}}A([c({attribute:"default-value"})],v.prototype,"defaultValue",2);A([c({attribute:"field-id"})],v.prototype,"fieldId",2);A([c({attribute:"field-name"})],v.prototype,"fieldName",2);A([y()],v.prototype,"_boxSize",2);A([y()],v.prototype,"_defaultValue",2);A([y({type:Number})],v.prototype,"_layoutCols",2);A([y({type:Number})],v.prototype,"_layoutRows",2);A([y()],v.prototype,"_selectionMode",2);customElements.get("little-layout-field")||customElements.define("little-layout-field",$);customElements.get("little-layout-field-control")||customElements.define("little-layout-field-control",p);customElements.get("little-layout-field-settings")||customElements.define("little-layout-field-settings",v);
+    `}createRenderRoot(){return this}}A([c({attribute:"default-value"})],v.prototype,"defaultValue",2);A([c({attribute:"field-id"})],v.prototype,"fieldId",2);A([c({attribute:"field-name"})],v.prototype,"fieldName",2);A([y()],v.prototype,"_boxSize",2);A([y()],v.prototype,"_defaultValue",2);A([y({type:Number})],v.prototype,"_layoutCols",2);A([y({type:Number})],v.prototype,"_layoutRows",2);A([y()],v.prototype,"_selectionMode",2);customElements.define("little-layout-field",$);customElements.define("little-layout-field-control",p);customElements.define("little-layout-field-settings",v);

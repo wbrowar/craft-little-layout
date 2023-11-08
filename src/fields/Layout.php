@@ -132,7 +132,6 @@ class Layout extends Field
                 'field' => $this,
                 'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'] ?? '',
                 'namespacedId' => $fieldProperties['namespacedId'],
-                'registerJs' => $fieldProperties['registerJs'],
             ]
         );
     }
@@ -163,7 +162,6 @@ class Layout extends Field
                 'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'],
                 'id' => $fieldProperties['id'],
                 'namespacedId' => $fieldProperties['namespacedId'],
-                'registerJs' => $fieldProperties['registerJs'],
                 'editable' => $editable,
             ]
         );
@@ -231,7 +229,6 @@ class Layout extends Field
             'id' => $id,
             'jsVars' => $jsonVars,
             'namespacedId' => $namespacedId,
-            'registerJs' => "$(`[data-little-layout='{$namespacedId}']`).LittleLayout(" . $jsonVarsString . ");",
         ];
     }
 }

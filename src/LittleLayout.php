@@ -149,8 +149,4 @@ class LittleLayout extends Plugin
 
         return $assetPaths;
     }
-
-    // Protected Methods
-    // =========================================================================
-
 }

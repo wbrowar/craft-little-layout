@@ -69,6 +69,13 @@ export class LittleLayoutFieldControl extends LitElement {
       &.layout-box--selected {
         --background-color: var(--medium-dark-text-color);
       }
+
+      &.layout-box--editable.layout-box--selected {
+        &:hover,
+        &:focus {
+          --background-color: color-mix(in srgb, var(--primary-color) 90%, var(--medium-dark-text-color) 30%);
+        }
+      }
     }
 
     .clear-button {
