@@ -11,69 +11,26 @@
  * @since     1.0.0LittleLayoutLayout
  */
 
-import { createApp } from 'vue';
-import { log } from "./utils/console";
+import { log } from './utils/console'
 import { LittleLayoutField } from './components/LittleLayoutField'
-import { LittleLayoutFieldControl } from './components/LittleLayoutFieldControl';
-import './global.css';
-
-import LittleLayoutFieldVue from './components/LittleLayoutField.vue';
-import LittleLayoutSettingsVue from './components/LittleLayoutSettings.vue';
+import { LittleLayoutFieldControl } from './components/LittleLayoutFieldControl'
+import { LittleLayoutFieldSettings } from './components/LittleLayoutFieldSettings'
+import './little-layout.css'
 
 // Register light DOM field component that includes input element for the page.
 if (!customElements.get('little-layout-field')) {
-    customElements.define('little-layout-field', LittleLayoutField);
-    log('Little Layout: web component registered');
+  customElements.define('little-layout-field', LittleLayoutField)
+  log('Little Layout Field: web component registered')
 }
 
 // Register shared layout component (including layout boxes).
 if (!customElements.get('little-layout-field-control')) {
-    customElements.define('little-layout-field-control', LittleLayoutFieldControl);
-    log('Little Layout Control: web component registered');
+  customElements.define('little-layout-field-control', LittleLayoutFieldControl)
+  log('Little Layout Control: web component registered')
 }
 
-;(function ( $, window, document, undefined ) {
-    var pluginName = "LittleLayout",
-        defaults = {
-        };
-
-    // Plugin constructor
-    function Plugin( element, options ) {
-        this.element = element;
-
-        this.options = $.extend( {}, defaults, options) ;
-
-        this._defaults = defaults;
-        this._name = pluginName;
-
-        this.init();
-    }
-
-    Plugin.prototype = {
-        init: function(id) {
-            const _this = this;
-
-            $(function () {
-
-                const app = document.querySelector(`[data-little-layout="${ _this.options.namespacedId }"]`);
-                if (app?.dataset?.fieldType === 'input') {
-                    createApp(LittleLayoutFieldVue, { field: _this.options, ...app.dataset }).mount(app);
-                } else if (app?.dataset?.fieldType === 'settings') {
-                    createApp(LittleLayoutSettingsVue, { field: _this.options, ...app.dataset }).mount(app);
-                }
-            });
-        }
-    };
-
-    // A really lightweight plugin wrapper around the constructor,
-    // preventing against multiple instantiations
-    $.fn[pluginName] = function ( options ) {
-        return this.each(function () {
-            if (!$.data(this, "plugin_" + pluginName)) {
-                $.data(this, "plugin_" + pluginName,
-                    new Plugin( this, options ));
-            }
-        });
-    };
-
-})( jQuery, window, document );
+// Register light DOM settings component that includes input element for the page.
+if (!customElements.get('little-layout-field-settings')) {
+  customElements.define('little-layout-field-settings', LittleLayoutFieldSettings)
+  log('Little Layout Field Settings: web component registered')
+}

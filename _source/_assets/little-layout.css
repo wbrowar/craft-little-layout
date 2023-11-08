@@ -1,0 +1,13 @@
+/*
+ * Add global CSS
+ */
+
+.little-layout-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--xl);
+
+    & .little-layout-settings__examples {
+        max-width: 100%
+    }
+}

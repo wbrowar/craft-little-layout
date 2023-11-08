@@ -21,6 +21,7 @@
 {% endif %}
 
 <little-layout-field
+    style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
     {{ clearable ? 'clearable="true"' : '' }}
     default-value="{{ startingValue }}"
     {{ editable ? 'editable="true"' : '' }}

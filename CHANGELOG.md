@@ -7,13 +7,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 1.3.0 - 2022-11-07
 ### Changed
 - Improved performance by refactoring Little Layout field from a Vue app to a Web Component.
+- Refactored field settings from a Vue app to a Web Component.
 - Changed layout boxes in field from clickable div elements to buttons.
 - Updated JS bundler to Vite 4.x.
-- Updated Tailwind to Tailwind 3.x.
 - Bumped NodeJS to Node 18.x.
 
 ### Removed
 - Removed message that popped up when it was detected that you would need to horizontally scroll.
+- Removed Vue and Tailwind CSS as front-end dependencies.
 
 ### Fixed
 - Removed field value change on initialization that caused Craft to think the field was updated before changes were made.

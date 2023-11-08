@@ -32,6 +32,11 @@ class Layout extends Field
     // =========================================================================
 
     /**
+     * @var string
+     */
+    public $boxSize = '';
+
+    /**
      * @var int
      */
     public $clearable = 1;
@@ -87,7 +92,8 @@ class Layout extends Field
         $rules = array_merge($rules, [
             [['clearable', 'cols', 'rows'], 'integer'],
             [['clearable', 'cols', 'rows'], 'default', 'value' => 1],
-            [['defaultValue', 'selectionMode'], 'string'],
+            [['boxSize', 'defaultValue', 'selectionMode'], 'string'],
+            ['boxSize', 'default', 'value' => ''],
             ['defaultValue', 'default', 'value' => ''],
             ['selectionMode', 'default', 'value' => 'box'],
         ]);
@@ -124,7 +130,7 @@ class Layout extends Field
             [
                 'name' => $fieldProperties['jsVars']['fieldNamespace'],
                 'field' => $this,
-                'fieldNamespacedName' => $fieldProperties['fieldNamespacedName'] ?? '',
+                'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'] ?? '',
                 'namespacedId' => $fieldProperties['namespacedId'],
                 'registerJs' => $fieldProperties['registerJs'],
             ]
