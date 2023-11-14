@@ -2,6 +2,87 @@
  * Add global CSS
  */
 
+little-layout-field-control {
+    & .container {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    & .field {
+        --layout-box-size: var(--little-layout-box-size, 22px);
+        --layout-boxes-gap: 0.25rem;
+
+        display: grid;
+        grid-template-columns: min-content minmax(0, 1fr);
+        gap: 0.3rem;
+        align-items: center;
+    }
+
+    & .layout-boxes {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-boxes-gap);
+    }
+
+    & .layout-boxes-row {
+        display: flex;
+        gap: var(--layout-boxes-gap);
+    }
+
+    & .layout-box {
+        --layout-box-border-radius: 0.3rem;
+        display: block;
+        padding: 5px;
+        width: var(--layout-box-size);
+        appearance: none;
+        aspect-ratio: 1 / 1;
+        background-color: var(--background-color, var(--ui-control-bg-color));
+        border: 1px solid var(--medium-dark-text-color);
+        border-radius: var(--border-radius, 0);
+
+        &.layout-box--editable {
+            cursor: pointer;
+
+            &:is(:hover, :focus) {
+                --background-color: var(--primary-color);
+                border-color: var(--primary-color);
+                outline: var(--layout-boxes-gap) solid color-mix(in srgb, var(--primary-color), transparent 90%);
+            }
+        }
+        &.layout-box--rounded-tl {
+            border-top-left-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-bl {
+            border-bottom-left-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-tr {
+            border-top-right-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-br {
+            border-bottom-right-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--selected {
+            --background-color: var(--medium-dark-text-color);
+        }
+
+        &.layout-box--editable.layout-box--selected {
+            &:is(:hover, :focus) {
+                --background-color: color-mix(in srgb, var(--primary-color) 90%, var(--medium-dark-text-color) 30%);
+            }
+        }
+    }
+
+    & .clear-button {
+        appearance: none;
+        display: block;
+        align-self: stretch;
+        width: 22px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}
+
 .little-layout-settings {
     display: flex;
     flex-wrap: wrap;

@@ -104,9 +104,7 @@ export class LittleLayoutField extends LitElement {
         layout-rows="${this.layoutRows}"
         selection-mode="${this.selectionMode}"
         @value-updated="${this._fieldValueListener}"
-      >
-        <span slot="clear-icon" class="delete icon"></span>
-      </little-layout-field-control>
+      ></little-layout-field-control>
       <input
         type="hidden"
         id="${this.fieldId}"

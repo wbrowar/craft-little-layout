@@ -4,94 +4,6 @@ import { property, state } from 'lit/decorators.js'
 export class LittleLayoutFieldControl extends LitElement {
   /**
    * =========================================================================
-   * CSS
-   * =========================================================================
-   */
-  static styles = css`
-    .container {
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .field {
-      --layout-box-size: var(--little-layout-box-size, 22px);
-      --layout-boxes-gap: 0.25rem;
-
-      display: grid;
-      grid-template-columns: min-content minmax(0, 1fr);
-      gap: 0.3rem;
-      align-items: center;
-    }
-
-    .layout-boxes {
-      display: flex;
-      flex-direction: column;
-      gap: var(--layout-boxes-gap);
-    }
-
-    .layout-boxes-row {
-      display: flex;
-      gap: var(--layout-boxes-gap);
-    }
-
-    .layout-box {
-      --layout-box-border-radius: 0.3rem;
-      display: block;
-      padding: 5px;
-      width: var(--layout-box-size);
-      appearance: none;
-      aspect-ratio: 1 / 1;
-      background-color: var(--background-color, var(--ui-control-bg-color));
-      border: 1px solid var(--medium-dark-text-color);
-      border-radius: var(--border-radius, 0);
-
-      &.layout-box--editable {
-        cursor: pointer;
-
-        &:hover,
-        &:focus {
-          --background-color: var(--primary-color);
-          border-color: var(--primary-color);
-          outline: var(--layout-boxes-gap) solid color-mix(in srgb, var(--primary-color), transparent 90%);
-        }
-      }
-      &.layout-box--rounded-tl {
-        border-top-left-radius: var(--layout-box-border-radius);
-      }
-      &.layout-box--rounded-bl {
-        border-bottom-left-radius: var(--layout-box-border-radius);
-      }
-      &.layout-box--rounded-tr {
-        border-top-right-radius: var(--layout-box-border-radius);
-      }
-      &.layout-box--rounded-br {
-        border-bottom-right-radius: var(--layout-box-border-radius);
-      }
-      &.layout-box--selected {
-        --background-color: var(--medium-dark-text-color);
-      }
-
-      &.layout-box--editable.layout-box--selected {
-        &:hover,
-        &:focus {
-          --background-color: color-mix(in srgb, var(--primary-color) 90%, var(--medium-dark-text-color) 30%);
-        }
-      }
-    }
-
-    .clear-button {
-      appearance: none;
-      display: block;
-      align-self: stretch;
-      width: 22px;
-      height: 25px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-  `
-
-  /**
-   * =========================================================================
    * PROPS
    * =========================================================================
    */
@@ -415,13 +327,11 @@ export class LittleLayoutFieldControl extends LitElement {
             ${this.clearable && this.editable && this._hasSelected
               ? html`<button
                   type="button"
-                  class="clear-button"
+                  class="clear-button delete icon"
                   title="Clear"
                   aria-label="Clear"
                   @click="${this._clearButtonClicked}"
-                >
-                  <slot name="clear-icon"></slot>
-                </button>`
+                ></button>`
               : nothing}
           </div>
         </div>
@@ -467,5 +377,12 @@ export class LittleLayoutFieldControl extends LitElement {
     ) {
       this._selectedBoxes = this._getSelectedBoxes()
     }
+  }
+
+  /**
+   * Changes the render mode for this component from shadow DOM to light DOM.
+   */
+  protected createRenderRoot() {
+    return this
   }
 }
