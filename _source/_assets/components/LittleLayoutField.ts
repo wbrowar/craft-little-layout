@@ -60,7 +60,7 @@ export class LittleLayoutField extends LitElement {
    * The value attribute for the input field. This is updated via an event from the child component.
    */
   @state()
-  protected _fieldValue: string
+  private _fieldValue: string
 
   /**
    * =========================================================================
@@ -72,6 +72,34 @@ export class LittleLayoutField extends LitElement {
    */
   private _fieldValueListener(e) {
     this._fieldValue = e.detail.fieldValue
+    this._setInputValueFromFieldValue()
+  }
+
+  /**
+   * =========================================================================
+   * METHODS
+   * =========================================================================
+   */
+  /**
+   * Sets `_fieldValue` from the value of the input.
+   */
+  private _getFieldValueFromInput() {
+    const littleLayoutInput = this.querySelector('input')
+
+    if (littleLayoutInput) {
+      this._fieldValue = littleLayoutInput.value
+    }
+  }
+
+  /**
+   * Sets the value of the input from `_fieldValue`.
+   */
+  private _setInputValueFromFieldValue() {
+    const littleLayoutInput = this.querySelector('input')
+
+    if (littleLayoutInput) {
+      littleLayoutInput.value = this._fieldValue
+    }
   }
 
   /**
@@ -81,6 +109,18 @@ export class LittleLayoutField extends LitElement {
    */
   protected connectedCallback() {
     super.connectedCallback()
+
+    this._getFieldValueFromInput()
+
+    const littleLayoutInput = this.querySelector('input')
+
+    if (littleLayoutInput) {
+      littleLayoutInput.addEventListener('change', this._getFieldValueFromInput)
+    }
+    if (littleLayoutInput) {
+      littleLayoutInput.addEventListener('input', this._getFieldValueFromInput)
+    }
+
     log('Little Layout: connected')
     table({
       clearable: this.clearable,
@@ -94,24 +134,30 @@ export class LittleLayoutField extends LitElement {
     })
   }
 
+  protected disconnectedCallback() {
+    super.disconnectedCallback()
+
+    const littleLayoutInput = this.querySelector('input')
+
+    if (littleLayoutInput) {
+      littleLayoutInput.removeEventListener('change', this._getFieldValueFromInput)
+    }
+    if (littleLayoutInput) {
+      littleLayoutInput.removeEventListener('input', this._getFieldValueFromInput)
+    }
+  }
+
   protected render() {
     return html`
       <little-layout-field-control
         ?clearable="${this.clearable}"
         ?editable="${this.editable}"
-        field-default="${this.defaultValue}"
+        field-default="${this._fieldValue}"
         layout-cols="${this.layoutCols}"
         layout-rows="${this.layoutRows}"
         selection-mode="${this.selectionMode}"
         @value-updated="${this._fieldValueListener}"
       ></little-layout-field-control>
-      <input
-        type="hidden"
-        id="${this.fieldId}"
-        name="${this.fieldName}[raw]"
-        autocomplete="off"
-        value="${this._fieldValue}"
-      />
     `
   }
 

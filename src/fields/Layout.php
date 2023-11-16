@@ -223,7 +223,6 @@ class Layout extends Field
             'namespacedId' => $namespacedId,
             'prefix' => Craft::$app->getView()->namespaceInputId(''),
         ];
-        $jsonVarsString = Json::encode($jsonVars);
 
         return [
             'id' => $id,

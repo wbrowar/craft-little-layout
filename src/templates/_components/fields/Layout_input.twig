@@ -13,6 +13,8 @@
  */
 #}
 
+{% import '_includes/forms.twig' as forms %}
+
 {% set startingValue = value.raw == '' ? field.defaultValue : value.raw %}
 
 {% set clearable = false %}
@@ -23,11 +25,20 @@
 <little-layout-field
     style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
     {{ clearable ? 'clearable="true"' : '' }}
-    default-value="{{ startingValue }}"
     {{ editable ? 'editable="true"' : '' }}
     field-id="{{ namespacedId }}"
     field-name="{{ fieldNamespacedName }}"
     layout-cols="{{ field.cols }}"
     layout-rows="{{ field.rows }}"
     selection-mode="{{ field.selectionMode }}"
-></little-layout-field>
+>
+    {{ forms.hidden({
+        inputAttributes: {
+            data: {
+                'little-layout-id': fieldNamespacedName,
+            }
+        },
+        name: name ~ '[raw]',
+        value: startingValue,
+    }) }}
+</little-layout-field>
