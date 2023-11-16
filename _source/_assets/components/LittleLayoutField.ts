@@ -116,8 +116,6 @@ export class LittleLayoutField extends LitElement {
 
     if (littleLayoutInput) {
       littleLayoutInput.addEventListener('change', this._getFieldValueFromInput)
-    }
-    if (littleLayoutInput) {
       littleLayoutInput.addEventListener('input', this._getFieldValueFromInput)
     }
 
@@ -141,8 +139,6 @@ export class LittleLayoutField extends LitElement {
 
     if (littleLayoutInput) {
       littleLayoutInput.removeEventListener('change', this._getFieldValueFromInput)
-    }
-    if (littleLayoutInput) {
       littleLayoutInput.removeEventListener('input', this._getFieldValueFromInput)
     }
   }
