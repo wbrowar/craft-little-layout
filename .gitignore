@@ -1,6 +1,6 @@
 # NODE ENVIRONMENT
-_source/_assets/.env
-_source/_assets/node_modules/*
+_assets/.env
+_assets/node_modules/*
 
 # MISC FILES
 .cache

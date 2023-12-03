@@ -1,21 +1,18 @@
 import { defineConfig } from 'vite'
-import * as dotenv from 'dotenv'
-import vue from '@vitejs/plugin-vue'
-dotenv.config({ path: '../../assembly-line.env' })
 
 export default defineConfig({
-  mode: 'development',
   build: {
+    cssMinify: 'lightningcss',
     emptyOutDir: true,
     manifest: true,
-    outDir: '../../src/assetbundles/dist',
+    outDir: '../src/assetbundles/dist',
     rollupOptions: {
       input: {
         'little-layout': './little-layout.ts',
       },
     },
   },
-  plugins: [vue()],
+  mode: 'development',
   server: {
     port: 3100,
   },

@@ -1,25 +1,26 @@
 import { html, LitElement, nothing } from 'lit'
-import { property, state } from 'lit/decorators.js'
+import { customElement, property, state } from 'lit/decorators.js'
 import { log, table } from '../utils/console'
 
+@customElement('little-layout-field-settings')
 export class LittleLayoutFieldSettings extends LitElement {
   /**
    * The default value of the field, based on the field’s current value or the default set in field settings.
    */
   @property({ attribute: 'default-value' })
-  defaultValue: string
+  defaultValue = ''
 
   /**
    * The ID attribute for the input field.
    */
   @property({ attribute: 'field-id' })
-  fieldId: string
+  fieldId = ''
 
   /**
    * The name attribute for the input field.
    */
   @property({ attribute: 'field-name' })
-  fieldName: string
+  fieldName = ''
 
   /**
    * =========================================================================
@@ -30,31 +31,31 @@ export class LittleLayoutFieldSettings extends LitElement {
    * TODO
    */
   @state()
-  protected _boxSize: string
+  protected _boxSize = ''
 
   /**
    * The value attribute for the input field. This is updated via an event from the child component.
    */
   @state()
-  protected _defaultValue: string
-
-  /**
-   * TODO
-   */
-  @state({ type: Number })
-  protected _layoutCols: number
-
-  /**
-   * TODO
-   */
-  @state({ type: Number })
-  protected _layoutRows: number
+  protected _defaultValue = ''
 
   /**
    * TODO
    */
   @state()
-  protected _selectionMode: 'box' | 'single'
+  protected _layoutCols = 1
+
+  /**
+   * TODO
+   */
+  @state()
+  protected _layoutRows = 1
+
+  /**
+   * TODO
+   */
+  @state()
+  protected _selectionMode: 'box' | 'single' = 'box'
 
   /**
    * =========================================================================
@@ -76,7 +77,7 @@ export class LittleLayoutFieldSettings extends LitElement {
   /**
    * Get settings options from field settings fields.
    */
-  private _getSettingsFromField(handle, field) {
+  private _getSettingsFromField(handle: string, field: { value: any }) {
     switch (handle) {
       case 'boxSize':
         log('Settings updated: boxSize', field.value)
@@ -102,7 +103,7 @@ export class LittleLayoutFieldSettings extends LitElement {
    * LIFECYCLE
    * =========================================================================
    */
-  protected connectedCallback() {
+  connectedCallback() {
     super.connectedCallback()
     log('Little Layout Settings: connected')
     table({
@@ -132,7 +133,7 @@ export class LittleLayoutFieldSettings extends LitElement {
     })
   }
 
-  protected render() {
+  render() {
     return html`
       <little-layout-field-control
         style="${this._boxSize ? `--little-layout-box-size: ${this._boxSize}` : nothing}"
@@ -159,5 +160,11 @@ export class LittleLayoutFieldSettings extends LitElement {
    */
   protected createRenderRoot() {
     return this
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'little-layout-field-settings': LittleLayoutFieldSettings
   }
 }

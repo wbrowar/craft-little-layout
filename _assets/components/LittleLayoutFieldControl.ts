@@ -1,11 +1,12 @@
-import { css, html, LitElement, nothing, type PropertyValues } from 'lit'
-import { property, state } from 'lit/decorators.js'
+import { html, LitElement, nothing, type PropertyValues } from 'lit'
+import { customElement, property, state } from 'lit/decorators.js'
 
+@customElement('little-layout-field-control')
 export class LittleLayoutFieldControl extends LitElement {
   /**
-   * =========================================================================
+   * ===========================================================================
    * PROPS
-   * =========================================================================
+   * ===========================================================================
    */
   /**
    * Enables a button that removes the current value.
@@ -23,19 +24,19 @@ export class LittleLayoutFieldControl extends LitElement {
    * The default value of the field, used when setting the initial value.
    */
   @property({ attribute: 'field-default' })
-  fieldDefault: string
+  fieldDefault = ''
 
   /**
    * The amount of columns defined in the field’s settings.
    */
   @property({ attribute: 'layout-cols', type: Number })
-  layoutCols: number
+  layoutCols = 1
 
   /**
    * The amount of rows defined in the field’s settings.
    */
   @property({ attribute: 'layout-rows', type: Number })
-  layoutRows: number
+  layoutRows = 1
 
   /**
    * Allows the user to select multiple layout boxes or a single box.
@@ -45,9 +46,9 @@ export class LittleLayoutFieldControl extends LitElement {
   selectionMode: 'box' | 'single' = 'box'
 
   /**
-   * =========================================================================
+   * ===========================================================================
    * STATE
-   * =========================================================================
+   * ===========================================================================
    */
   /**
    * Status that determines what action a user can take next.
@@ -86,9 +87,9 @@ export class LittleLayoutFieldControl extends LitElement {
   protected _yEnd = undefined
 
   /**
-   * =========================================================================
+   * ===========================================================================
    * COMPUTED
-   * =========================================================================
+   * ===========================================================================
    */
   /**
    * Computes the field value as a string. When there is a field value it will return a set of coordinates, otherwise it will return the string: "empty".
@@ -153,9 +154,9 @@ export class LittleLayoutFieldControl extends LitElement {
   }
 
   /**
-   * =========================================================================
+   * ===========================================================================
    * EVENTS
-   * =========================================================================
+   * ===========================================================================
    */
   /**
    * Event that passes the field value up to the parent component.
@@ -173,9 +174,9 @@ export class LittleLayoutFieldControl extends LitElement {
   }
 
   /**
-   * =========================================================================
+   * ===========================================================================
    * METHODS
-   * =========================================================================
+   * ===========================================================================
    */
   /**
    * Adds modifier classes to each layout box, based on coordinates and field settings.
@@ -263,9 +264,9 @@ export class LittleLayoutFieldControl extends LitElement {
   }
 
   /**
-   * =========================================================================
+   * ===========================================================================
    * LIFECYCLE
-   * =========================================================================
+   * ===========================================================================
    */
   connectedCallback() {
     super.connectedCallback()
@@ -384,5 +385,11 @@ export class LittleLayoutFieldControl extends LitElement {
    */
   protected createRenderRoot() {
     return this
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'little-layout-field-control': LittleLayoutFieldControl
   }
 }

@@ -1,8 +1,14 @@
-import { html, LitElement, nothing } from 'lit'
-import { property, state } from 'lit/decorators.js'
+import { html, LitElement } from 'lit'
+import { customElement, property, state } from 'lit/decorators.js'
 import { log, table } from '../utils/console'
 
+@customElement('little-layout-field')
 export class LittleLayoutField extends LitElement {
+  /**
+   * ===========================================================================
+   * PROPS
+   * ===========================================================================
+   */
   /**
    * Pass-through prop based on field setting.
    */
@@ -13,7 +19,7 @@ export class LittleLayoutField extends LitElement {
    * The default value of the field, based on the field’s current value or the default set in field settings.
    */
   @property({ attribute: 'default-value' })
-  defaultValue: string
+  defaultValue = ''
 
   /**
    * Pass-through prop based on field setting.
@@ -25,31 +31,31 @@ export class LittleLayoutField extends LitElement {
    * The ID attribute for the input field.
    */
   @property({ attribute: 'field-id' })
-  fieldId: string
+  fieldId = ''
 
   /**
    * The name attribute for the input field.
    */
   @property({ attribute: 'field-name' })
-  fieldName: string
+  fieldName = ''
 
   /**
    * Pass-through prop based on field setting.
    */
   @property({ attribute: 'layout-cols', type: Number })
-  layoutCols: number
+  layoutCols = 1
 
   /**
    * Pass-through prop based on field setting.
    */
   @property({ attribute: 'layout-rows', type: Number })
-  layoutRows: number
+  layoutRows = 1
 
   /**
    * Pass-through prop based on field setting.
    */
   @property({ attribute: 'selection-mode' })
-  selectionMode: 'box' | 'single'
+  selectionMode: 'box' | 'single' = 'box'
 
   /**
    * =========================================================================
@@ -60,7 +66,7 @@ export class LittleLayoutField extends LitElement {
    * The value attribute for the input field. This is updated via an event from the child component.
    */
   @state()
-  private _fieldValue: string
+  private _fieldValue = ''
 
   /**
    * =========================================================================
@@ -107,7 +113,7 @@ export class LittleLayoutField extends LitElement {
    * LIFECYCLE
    * =========================================================================
    */
-  protected connectedCallback() {
+  connectedCallback() {
     super.connectedCallback()
 
     this._getFieldValueFromInput()
@@ -132,7 +138,7 @@ export class LittleLayoutField extends LitElement {
     })
   }
 
-  protected disconnectedCallback() {
+  disconnectedCallback() {
     super.disconnectedCallback()
 
     const littleLayoutInput = this.querySelector('input')
@@ -143,7 +149,7 @@ export class LittleLayoutField extends LitElement {
     }
   }
 
-  protected render() {
+  render() {
     return html`
       <little-layout-field-control
         ?clearable="${this.clearable}"
@@ -162,5 +168,11 @@ export class LittleLayoutField extends LitElement {
    */
   protected createRenderRoot() {
     return this
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'little-layout-field': LittleLayoutField
   }
 }
