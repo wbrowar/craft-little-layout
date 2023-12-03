@@ -113,14 +113,14 @@ export class LittleLayoutFieldSettings extends LitElement {
     })
 
     const settingsFields: Record<string, string> = {
-      boxSize: `[data-little-layout-settings="${this.fieldId}"] [data-attribute="boxSize"] input`,
-      cols: `[data-little-layout-settings="${this.fieldId}"] [data-attribute="cols"] input`,
-      rows: `[data-little-layout-settings="${this.fieldId}"] [data-attribute="rows"] input`,
-      selectionMode: `[data-little-layout-settings="${this.fieldId}"] [data-attribute="selectionMode"] select`,
+      boxSize: `[data-attribute="boxSize"] input`,
+      cols: `[data-attribute="cols"] input`,
+      rows: `[data-attribute="rows"] input`,
+      selectionMode: `[data-attribute="selectionMode"] select`,
     }
 
     Object.entries(settingsFields).forEach(([handle, selector]) => {
-      const field = document.querySelector(selector)
+      const field = this.querySelector(selector)
       if (field) {
         field.addEventListener('change', (e) => {
           log(`Field updated: ${handle}`)

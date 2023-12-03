@@ -83,12 +83,27 @@ little-layout-field-control {
     }
 }
 
-.little-layout-settings {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--xl);
+#settings:has(little-layout-field-settings) {
+    container-type: inline-size;
+    container-name: settings;
+}
+little-layout-field-settings {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 var(--xl);
 
-    & .little-layout-settings__examples {
-        max-width: 100%
+    @container settings (width > 700px) {
+        & {
+            --grid-template-columns: max-content 1fr;
+        }
+        & .little-layout-settings__fields {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+        & little-layout-field-control {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
     }
 }

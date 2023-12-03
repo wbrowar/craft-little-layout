@@ -21,7 +21,14 @@
 {#{% dd namespacedId %}#}
 {#{% dd registerJs %}#}
 
-<div data-little-layout-settings="{{ namespacedId }}" class="little-layout-settings">
+<little-layout-field-settings
+    default-value="{{ field.defaultValue }}"
+    field-id="{{ namespacedId }}"
+    field-name="{{ name }}[defaultValue]"
+    layout-cols="{{ field.cols }}"
+    layout-rows="{{ field.rows }}"
+    selection-mode="{{ field.selectionMode }}"
+>
     <div class="little-layout-settings__fields">
         {{ forms.textField({
             id: "cols",
@@ -80,18 +87,10 @@
             value: field.selectionMode,
         }) }}
     </div>
-    <div class="little-layout-settings__examples">
-        {% set fieldInput %}<little-layout-field-settings
-            default-value="{{ field.defaultValue }}"
-            field-id="{{ namespacedId }}"
-            field-name="{{ name }}[defaultValue]"
-            layout-cols="{{ field.cols }}"
-            layout-rows="{{ field.rows }}"
-            selection-mode="{{ field.selectionMode }}"
-            ></little-layout-field-settings>{% endset %}
+    <div class="little-layout-settings__default-value-label">
         {{ forms.field({
             instructions: 'Select a default value for this field using the layout boxes below.'|t('little-layout'),
             label: 'Default value'|t('little-layout'),
-        }, fieldInput) }}
+        }) }}
     </div>
-</div>
+</little-layout-field-settings>
