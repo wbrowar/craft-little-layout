@@ -1,5 +1,7 @@
-import { html, LitElement, nothing, type PropertyValues } from 'lit'
+import { html, LitElement, nothing } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import boxIconSvgs from '../constants/box-icons.ts'
+import type { BoxIcons, SelectionMode } from '../types'
 
 @customElement('little-layout-field-control')
 export class LittleLayoutFieldControl extends LitElement {
@@ -8,6 +10,12 @@ export class LittleLayoutFieldControl extends LitElement {
    * PROPS
    * ===========================================================================
    */
+  /**
+   * Enables the ability to use the field.
+   */
+  @property({ attribute: 'box-icons', type: Object })
+  boxIcons: BoxIcons = {}
+
   /**
    * Enables a button that removes the current value.
    */
@@ -43,7 +51,7 @@ export class LittleLayoutFieldControl extends LitElement {
    * This is defined in the field’s settings.
    */
   @property({ attribute: 'selection-mode' })
-  selectionMode: 'box' | 'single' = 'box'
+  selectionMode: SelectionMode = 'box'
 
   /**
    * ===========================================================================
@@ -60,31 +68,31 @@ export class LittleLayoutFieldControl extends LitElement {
    * When selecting a single block in the "box" `selectionMode`, this timer will automatically deselect a box if the box has only been clicked once.
    */
   @state()
-  protected _timer
+  protected _timer?: ReturnType<typeof setTimeout> = undefined
 
   /**
    * The coordinate of the starting X value.
    */
   @state()
-  protected _xStart = undefined
+  protected _xStart?: number = undefined
 
   /**
    * The coordinate of the ending X value.
    */
   @state()
-  protected _xEnd = undefined
+  protected _xEnd?: number = undefined
 
   /**
    * The coordinate of the starting Y value.
    */
   @state()
-  protected _yStart = undefined
+  protected _yStart?: number = undefined
 
   /**
    * The coordinate of the ending Y value.
    */
   @state()
-  protected _yEnd = undefined
+  protected _yEnd?: number = undefined
 
   /**
    * ===========================================================================
@@ -95,7 +103,7 @@ export class LittleLayoutFieldControl extends LitElement {
    * Computes the field value as a string. When there is a field value it will return a set of coordinates, otherwise it will return the string: "empty".
    */
   @state()
-  protected _fieldValue: string
+  protected _fieldValue: string = 'empty'
   private _getFieldValue() {
     if (
       typeof this._xStart === 'number' &&
@@ -112,7 +120,7 @@ export class LittleLayoutFieldControl extends LitElement {
    * Indicates whether or not at least one box has been selected.
    */
   @state()
-  protected _hasSelected: boolean
+  protected _hasSelected: boolean = false
   private _getHasSelected() {
     if (this._fieldValue === 'empty') {
       return false
@@ -129,7 +137,7 @@ export class LittleLayoutFieldControl extends LitElement {
    * An array of selected box coordinates.
    */
   @state()
-  protected _selectedBoxes: string[]
+  protected _selectedBoxes: string[] = []
   private _getSelectedBoxes() {
     const selected = []
 
@@ -212,7 +220,8 @@ export class LittleLayoutFieldControl extends LitElement {
   /**
    * Handles clicking on a layout box.
    */
-  private _boxClicked(coordinates) {
+  private _boxClicked(coordinates: [number, number]) {
+    const activeElement: HTMLButtonElement | null = document.activeElement as HTMLButtonElement
     const x = coordinates[0]
     const y = coordinates[1]
 
@@ -222,28 +231,28 @@ export class LittleLayoutFieldControl extends LitElement {
 
       if (this.selectionMode === 'box') {
         this._timer = setInterval(() => {
-          document.activeElement.blur()
+          activeElement?.blur()
           this._status = 'idle'
         }, 10000)
         this._status = 'inputStarted'
       } else if (this.selectionMode === 'single') {
-        document.activeElement.blur()
+        activeElement?.blur()
       }
     } else if (this._status === 'inputStarted') {
-      if (x < this._xStart) {
+      if (x < this._xStart!) {
         this._xEnd = this._xStart
         this._xStart = x
       } else {
         this._xEnd = x
       }
-      if (y < this._yStart) {
+      if (y < this._yStart!) {
         this._yEnd = this._yStart
         this._yStart = y
       } else {
         this._yEnd = y
       }
       this._endTimer()
-      document.activeElement.blur()
+      activeElement?.blur()
     }
   }
 
@@ -296,12 +305,17 @@ export class LittleLayoutFieldControl extends LitElement {
       for (let c = 0; c < cols; c++) {
         const column = c + 1
         const row = r + 1
+        const icon = this.boxIcons[`${column}|${row}`] ?? undefined
+
         checkboxCols.push(
           html` <button
             class="layout-box ${this._boxClassesForBox(column, row)}"
+            title="${icon?.description ?? nothing}"
             type="button"
             @click="${this.editable ? () => this._boxClicked([column, row]) : nothing}"
-          ></button>`
+          >
+            ${boxIconSvgs[icon?.id] ?? nothing}
+          </button>`
         )
       }
 
@@ -324,24 +338,22 @@ export class LittleLayoutFieldControl extends LitElement {
       <div class="container">
         <div class="field">
           <div class="layout-boxes">${checkboxRows}</div>
-          <div>
-            ${this.clearable && this.editable && this._hasSelected
-              ? html`<button
-                  type="button"
-                  class="clear-button delete icon"
-                  title="Clear"
-                  aria-label="Clear"
-                  @click="${this._clearButtonClicked}"
-                ></button>`
-              : nothing}
-          </div>
+          ${this.clearable && this.editable && this._hasSelected
+            ? html`<button
+                type="button"
+                class="clear-button delete icon"
+                title="Clear"
+                aria-label="Clear"
+                @click="${this._clearButtonClicked}"
+              ></button>`
+            : nothing}
         </div>
       </div>
       ${import.meta.env.DEV && import.meta.env.VITE_SHOW_FIELD_DEBUG_INFO === 'true' ? debugInfo : nothing}
     `
   }
 
-  protected willUpdate(changedProperties: PropertyValues<this>) {
+  protected willUpdate(changedProperties: Map<string, any>) {
     /**
      * Set computed values for:
      *   _fieldValue

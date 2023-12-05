@@ -93,4 +93,64 @@
             label: 'Default value'|t('little-layout'),
         }) }}
     </div>
+    <div class="little-layout-settings__icons">
+        {{ forms.editableTableField({
+            label: 'Box Icons'|t('little-layout'),
+            instructions: 'Add icons to layout boxes when using this field to select alingment options.'|t('admin-bar'),
+            id: 'boxIcons',
+            name: 'boxIcons',
+            addRowLabel: 'Add an icon'|t('little-layout'),
+            allowAdd: true,
+            allowDelete: true,
+            allowReorder: true,
+            cols: {
+                column: {
+                    heading: 'Column'|t('little-layout'),
+                    info: 'Selects the column to place the icon.'|t('little-layout'),
+                    required: true,
+                    thin: true,
+                    type: 'number',
+                },
+                row: {
+                    heading: 'Row'|t('little-layout'),
+                    info: 'Selects the row to place the icon.'|t('little-layout'),
+                    required: true,
+                    thin: true,
+                    type: 'number',
+                },
+                icon: {
+                    heading: 'Icon'|t('little-layout'),
+                    options: [
+                        { label: 'Align: Top', value: 'alignTop' },
+                        { label: 'Align: Center Vertical', value: 'alignCenterVertical' },
+                        { label: 'Align: Bottom', value: 'alignBottom' },
+                        { label: 'Align: Center', value: 'alignCenter' },
+                        { label: 'Align: Left', value: 'alignLeft' },
+                        { label: 'Align: Center Horizontal', value: 'alignCenterHorizontal' },
+                        { label: 'Align: Right', value: 'alignRight' },
+                        { label: 'Arrow: Up', value: 'arrowUp' },
+                        { label: 'Arrow: Down', value: 'arrowDown' },
+                        { label: 'Arrow: Left', value: 'arrowLeft' },
+                        { label: 'Arrow: Right', value: 'arrowRight' },
+                        { label: 'Arrows In', value: 'arrowsInCorners' },
+                        { label: 'Arrows Out', value: 'arrowsOutCardinal' },
+                        { label: 'Arrows Out (corners)', value: 'arrowsOutCorners' },
+                        { label: 'Text Align: Left', value: 'textAlignLeft' },
+                        { label: 'Text Align: Center', value: 'textAlignCenter' },
+                        { label: 'Text Align: Right', value: 'textAlignRight' },
+                        { label: 'Text Align: Justified', value: 'textAlignJustified' },
+                    ],
+                    thin: true,
+                    type: 'select',
+                },
+                description: {
+                    heading: 'Description'|t('little-layout'),
+                    info: 'Description of what happens when the icon is selected.'|t('little-layout'),
+                    type: 'singleline',
+                },
+            },
+            defaultValues: { column: 1, row: 1 },
+            rows: field.boxIcons ?? [],
+        }) }}
+    </div>
 </little-layout-field-settings>

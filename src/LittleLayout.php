@@ -124,7 +124,7 @@ class LittleLayout extends Plugin
             ];
         }
 
-        $manifestPath = self::$plugin->getBasePath() . '/assetbundles/dist/manifest.json';
+        $manifestPath = self::$plugin->getBasePath() . '/assetbundles/dist/.vite/manifest.json';
 
         if ($manifestPath ?? false) {
             $manifestJson = file_get_contents($manifestPath);

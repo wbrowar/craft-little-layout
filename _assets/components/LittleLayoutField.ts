@@ -1,6 +1,8 @@
 import { html, LitElement } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { log, table } from '../utils/console'
+import type { SelectionMode } from '../types'
+import { BoxIcons } from '../types'
 
 @customElement('little-layout-field')
 export class LittleLayoutField extends LitElement {
@@ -9,6 +11,12 @@ export class LittleLayoutField extends LitElement {
    * PROPS
    * ===========================================================================
    */
+  /**
+   * Pass-through prop based on field setting.
+   */
+  @property({ attribute: 'box-icons', type: Object })
+  boxIcons: BoxIcons = {}
+
   /**
    * Pass-through prop based on field setting.
    */
@@ -55,7 +63,7 @@ export class LittleLayoutField extends LitElement {
    * Pass-through prop based on field setting.
    */
   @property({ attribute: 'selection-mode' })
-  selectionMode: 'box' | 'single' = 'box'
+  selectionMode: SelectionMode = 'box'
 
   /**
    * =========================================================================
@@ -76,7 +84,7 @@ export class LittleLayoutField extends LitElement {
   /**
    * Handles the `@value-updated` event. Sets the `_fieldValue` passed in from the event.
    */
-  private _fieldValueListener(e) {
+  private _fieldValueListener(e: CustomEvent) {
     this._fieldValue = e.detail.fieldValue
     this._setInputValueFromFieldValue()
   }
@@ -154,6 +162,7 @@ export class LittleLayoutField extends LitElement {
       <little-layout-field-control
         ?clearable="${this.clearable}"
         ?editable="${this.editable}"
+        box-icons="${JSON.stringify(this.boxIcons)}"
         field-default="${this._fieldValue}"
         layout-cols="${this.layoutCols}"
         layout-rows="${this.layoutRows}"

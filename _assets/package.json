@@ -1,15 +1,16 @@
 {
-  "name": "little-layout-assets",
+  "name": "little-layout",
+  "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "dotenv": "^8.2.0",
+    "lightningcss": "^1.22.1",
     "lit": "^3.0.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",

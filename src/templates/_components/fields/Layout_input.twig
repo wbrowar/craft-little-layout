@@ -26,6 +26,7 @@
     style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
     {{ clearable ? 'clearable="true"' : '' }}
     {{ editable ? 'editable="true"' : '' }}
+    box-icons="{{ boxIcons|json_encode }}"
     field-id="{{ namespacedId }}"
     field-name="{{ fieldNamespacedName }}"
     layout-cols="{{ field.cols }}"

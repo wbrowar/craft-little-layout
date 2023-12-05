@@ -4,13 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.3.0 - 2022-11-07
+## 1.3.0 - 2022-12-04
+### Added
+- Added field setting to add icons to Little Layout field boxes.
+- Added field setting to set the height and width of Little Layout field boxes, using CSS values.
+- Updated doc blocks and added return types to all PHP files.
+
 ### Changed
 - Improved performance by refactoring Little Layout field from a Vue app to a Web Component.
 - Refactored field settings from a Vue app to a Web Component.
-- Changed layout boxes in field from clickable div elements to buttons.
-- Updated JS bundler to Vite 4.x.
-- Bumped NodeJS to Node 18.x.
+- Changed layout boxes in field from clickable div elements to `button` elements.
+- Updated JS bundler to Vite 5.x.
+- Bumped NodeJS to Node 20.x.
 
 ### Removed
 - Removed message that popped up when it was detected that you would need to horizontally scroll.

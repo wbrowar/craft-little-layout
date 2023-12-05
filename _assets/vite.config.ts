@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  css: {
+    transformer: 'lightningcss',
+  },
   build: {
     cssMinify: 'lightningcss',
     emptyOutDir: true,
@@ -12,7 +15,6 @@ export default defineConfig({
       },
     },
   },
-  mode: 'development',
   server: {
     port: 3100,
   },

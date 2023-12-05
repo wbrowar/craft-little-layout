@@ -32,34 +32,39 @@ class Layout extends Field
     // =========================================================================
 
     /**
-     * @var string
+     * @var array
      */
-    public $boxSize = '';
-
-    /**
-     * @var int
-     */
-    public $clearable = 1;
-
-    /**
-     * @var int
-     */
-    public $cols = 1;
+    public array $boxIcons = [];
 
     /**
      * @var string
      */
-    public $defaultValue = '';
+    public string $boxSize = '';
 
     /**
      * @var int
      */
-    public $rows = 1;
+    public int $clearable = 1;
 
     /**
      * @var int
      */
-    public $selectionMode = 'box';
+    public int $cols = 1;
+
+    /**
+     * @var string
+     */
+    public string $defaultValue = '';
+
+    /**
+     * @var int
+     */
+    public int $rows = 1;
+
+    /**
+     * @var string
+     */
+    public string $selectionMode = 'box';
 
     // Static Methods
     // =========================================================================
@@ -119,7 +124,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml():?string
+    public function getSettingsHtml():? string
     {
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
@@ -152,17 +157,30 @@ class Layout extends Field
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
 
+        $boxIcons = [];
+        if ($this->boxIcons ?? false) {
+            foreach ($this->boxIcons as $icon) {
+                if ($icon['column'] ?? false && $icon['row'] ?? false) {
+                    $boxIcons[$icon['column'] . '|' . $icon['row']] = [
+                        'description' => $icon['description'],
+                        'id' => $icon['icon'],
+                    ];
+                }
+            }
+        }
+
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
             'little-layout/_components/fields/Layout_input',
             [
-                'name' => $this->handle,
-                'value' => $value,
+                'boxIcons' => $boxIcons,
+                'editable' => $editable,
                 'field' => $element->getFieldLayout()->getFieldByHandle($this->handle),
                 'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'],
                 'id' => $fieldProperties['id'],
+                'name' => $this->handle,
                 'namespacedId' => $fieldProperties['namespacedId'],
-                'editable' => $editable,
+                'value' => $value,
             ]
         );
     }
@@ -178,7 +196,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null): mixed
+    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null): LayoutModel
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
