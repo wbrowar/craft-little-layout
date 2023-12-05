@@ -206,26 +206,10 @@ class Layout extends Field
         } elseif ($value instanceof LayoutModel) {
             $model = $value;
         } else {
-            $model = new LayoutModel([]);
+            $model = new LayoutModel(['raw' => $value]);
         }
 
         return $model;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function normalizeValueFromRequest(mixed $value, ?ElementInterface $element = null): mixed
-    {
-        return $this->normalizeValue(['raw' => $value], $element);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
-    {
-        return parent::serializeValue($value, $element);
     }
 
     // Private Methods
