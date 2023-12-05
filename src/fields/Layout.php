@@ -152,7 +152,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml($value, ?\craft\base\ElementInterface $element = null, $editable = true): string
+    public function getInputHtml($value, ?ElementInterface $element = null, $editable = true): string
     {
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
@@ -196,7 +196,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null): LayoutModel
+    public function normalizeValue($value, ?ElementInterface $element = null): LayoutModel
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
@@ -215,7 +215,15 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ?\craft\base\ElementInterface $element = null): mixed
+    public function normalizeValueFromRequest(mixed $value, ?ElementInterface $element = null): mixed
+    {
+        return $this->normalizeValue(['raw' => $value], $element);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }

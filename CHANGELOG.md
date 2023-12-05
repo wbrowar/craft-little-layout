@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Removed Vue and Tailwind CSS as front-end dependencies.
 
 ### Fixed
+- Update the way the field is saved in order to allow for resaving via the CLI.
 - Removed field value change on initialization that caused Craft to think the field was updated before changes were made.
 
 
