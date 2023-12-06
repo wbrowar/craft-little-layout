@@ -202,10 +202,18 @@ class Layout extends Field
             $value = Json::decodeIfJson($value);
         }
         if (\is_array($value)) {
+            // Field data passed to Twig and GraphQL.
+
+            $settings = $this->getSettings();
+
             $model = new LayoutModel($value);
+            $model->columns = $settings['cols'];
+            $model->rows = $settings['rows'];
         } elseif ($value instanceof LayoutModel) {
+            // Field data used when saving the field.
             $model = $value;
         } else {
+            // Field data used in field inputs.
             $model = new LayoutModel(['raw' => $value]);
         }
 

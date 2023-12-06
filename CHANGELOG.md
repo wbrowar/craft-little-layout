@@ -4,16 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.3.0 - 2022-12-04
+## 2.0.0 - 2022-12-05
 ### Added
 - Added field setting to add icons to Little Layout field boxes.
 - Added field setting to set the height and width of Little Layout field boxes, using CSS values.
-- Updated doc blocks and added return types to all PHP files.
+- Added ability to get column and row settings from a field in your Twig templates and GraphQL queries.
 
 ### Changed
 - Improved performance by refactoring Little Layout field from a Vue app to a Web Component.
 - Refactored field settings from a Vue app to a Web Component.
 - Changed layout boxes in field from clickable div elements to `button` elements.
+- Updated doc blocks and added return types to all PHP files.
 - Updated JS bundler to Vite 5.x.
 - Bumped NodeJS to Node 20.x.
 

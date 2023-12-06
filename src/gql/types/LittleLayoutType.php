@@ -67,6 +67,16 @@ class LittleLayoutType
                 'type' => Type::listOf(Type::string()),
                 'description' => 'Array of coordinates selected in the layout field. Coordinates are formatted in `x|y` format.',
             ],
+            'totalColumns' => [
+                'name' => 'totalColumns',
+                'type' => Type::int(),
+                'description' => 'The columns setting for this field.',
+            ],
+            'totalRows' => [
+                'name' => 'totalRows',
+                'type' => Type::int(),
+                'description' => 'The rows setting for this field.',
+            ],
         ];
     }
 }

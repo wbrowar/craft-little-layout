@@ -23,9 +23,19 @@ class LayoutModel extends Model
     // =========================================================================
 
     /**
+     * @var int
+     */
+    public $columns = 1;
+
+    /**
      * @var string
      */
     public $raw = '';
+
+    /**
+     * @var int
+     */
+    public $rows = 1;
 
     // Public Methods
     // =========================================================================
@@ -149,6 +159,26 @@ class LayoutModel extends Model
         }
 
         return [];
+    }
+
+    /**
+     * The columns setting for this field.
+     *
+     * @return int
+     */
+    public function getTotalColumns(): int
+    {
+        return $this->columns;
+    }
+
+    /**
+     * The rows setting for this field.
+     *
+     * @return int
+     */
+    public function getTotalRows(): int
+    {
+        return $this->rows;
     }
 
     /**
