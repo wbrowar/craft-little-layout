@@ -1,0 +1,133 @@
+/*
+ * Add global CSS
+ */
+
+little-layout-field-control {
+    & .container {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    & .field {
+        --layout-box-size: var(--little-layout-box-size, 22px);
+        --layout-boxes-gap: 0.25rem;
+
+        display: grid;
+        grid-template-columns: min-content minmax(0, 1fr);
+        gap: 0.3rem;
+        align-items: center;
+    }
+
+    & .layout-boxes {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-boxes-gap);
+    }
+
+    & .layout-boxes-row {
+        display: flex;
+        gap: var(--layout-boxes-gap);
+    }
+
+    & .layout-box {
+        --layout-box-border-radius: 0.3rem;
+        display: block;
+        padding: 2px;
+        width: var(--layout-box-size);
+        appearance: none;
+        aspect-ratio: 1 / 1;
+        background-color: var(--background-color, var(--ui-control-bg-color));
+        border: 1px solid var(--medium-dark-text-color);
+        border-radius: var(--border-radius, 0);
+        color: var(--color);
+
+        &.layout-box--editable {
+            cursor: pointer;
+
+            &:is(:hover, :focus) {
+                --background-color: var(--primary-color);
+                --color: white;
+                border-color: var(--primary-color);
+                outline: var(--layout-boxes-gap) solid color-mix(in srgb, var(--primary-color), transparent 90%);
+            }
+        }
+        &.layout-box--rounded-tl {
+            border-top-left-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-bl {
+            border-bottom-left-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-tr {
+            border-top-right-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--rounded-br {
+            border-bottom-right-radius: var(--layout-box-border-radius);
+        }
+        &.layout-box--selected {
+            --background-color: var(--medium-dark-text-color);
+            --color: rgb(255 255 255  / 0.8);
+        }
+
+        &.layout-box--editable.layout-box--selected {
+            &:is(:hover, :focus) {
+                --background-color: color-mix(in srgb, var(--primary-color) 90%, var(--medium-dark-text-color) 30%);
+                --color: color-mix(in srgb, white 90%, var(--medium-dark-text-color) 30%);
+            }
+        }
+
+        & > svg {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    & .clear-button {
+        appearance: none;
+        display: block;
+        align-self: stretch;
+        width: 22px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        &:before {
+            margin-top: -3px;
+        }
+    }
+}
+
+#settings:has(little-layout-field-settings) {
+    container-type: inline-size;
+    container-name: settings;
+}
+little-layout-field-settings {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns, 1fr);
+    gap: 0 var(--xl);
+    max-width: 100%;
+
+    @container settings (width > 900px) {
+        & {
+            --grid-template-columns: max-content 1fr;
+            grid-template-rows: auto auto 1fr;
+        }
+        & .little-layout-settings__default-value-label {
+            grid-column: 2 / -1;
+            grid-row: 1 / 2;
+        }
+        & .little-layout-settings__fields {
+            grid-column: 1 / 2;
+            grid-row: 1 / 4;
+        }
+        & little-layout-field-control {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+        & .little-layout-settings__icons {
+            margin-top: var(--xl);
+            padding-top: var(--xl);
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            border-top: 1px solid var(--hairline-color);
+        }
+    }
+}

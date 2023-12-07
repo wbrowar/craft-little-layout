@@ -32,29 +32,39 @@ class Layout extends Field
     // =========================================================================
 
     /**
-     * @var int
+     * @var array
      */
-    public $clearable = 1;
-
-    /**
-     * @var int
-     */
-    public $cols = 1;
+    public array $boxIcons = [];
 
     /**
      * @var string
      */
-    public $defaultValue = '';
+    public string $boxSize = '';
 
     /**
      * @var int
      */
-    public $rows = 1;
+    public int $clearable = 1;
 
     /**
      * @var int
      */
-    public $selectionMode = 'box';
+    public int $cols = 1;
+
+    /**
+     * @var string
+     */
+    public string $defaultValue = '';
+
+    /**
+     * @var int
+     */
+    public int $rows = 1;
+
+    /**
+     * @var string
+     */
+    public string $selectionMode = 'box';
 
     // Static Methods
     // =========================================================================
@@ -87,7 +97,8 @@ class Layout extends Field
         $rules = array_merge($rules, [
             [['clearable', 'cols', 'rows'], 'integer'],
             [['clearable', 'cols', 'rows'], 'default', 'value' => 1],
-            [['defaultValue', 'selectionMode'], 'string'],
+            [['boxSize', 'defaultValue', 'selectionMode'], 'string'],
+            ['boxSize', 'default', 'value' => ''],
             ['defaultValue', 'default', 'value' => ''],
             ['selectionMode', 'default', 'value' => 'box'],
         ]);
@@ -113,7 +124,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml():?string
+    public function getSettingsHtml():? string
     {
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
@@ -124,8 +135,8 @@ class Layout extends Field
             [
                 'name' => $fieldProperties['jsVars']['fieldNamespace'],
                 'field' => $this,
+                'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'] ?? '',
                 'namespacedId' => $fieldProperties['namespacedId'],
-                'registerJs' => $fieldProperties['registerJs'],
             ]
         );
     }
@@ -141,23 +152,35 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml($value, ?\craft\base\ElementInterface $element = null, $editable = true): string
+    public function getInputHtml($value, ?ElementInterface $element = null, $editable = true): string
     {
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
+
+        $boxIcons = [];
+        if ($this->boxIcons ?? false) {
+            foreach ($this->boxIcons as $icon) {
+                if ($icon['column'] ?? false && $icon['row'] ?? false) {
+                    $boxIcons[$icon['column'] . '|' . $icon['row']] = [
+                        'description' => $icon['description'],
+                        'id' => $icon['icon'],
+                    ];
+                }
+            }
+        }
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
             'little-layout/_components/fields/Layout_input',
             [
-                'name' => $this->handle,
-                'value' => $value,
+                'boxIcons' => $boxIcons,
+                'editable' => $editable,
                 'field' => $element->getFieldLayout()->getFieldByHandle($this->handle),
                 'fieldNamespacedName' => $fieldProperties['jsVars']['fieldNamespacedName'],
                 'id' => $fieldProperties['id'],
+                'name' => $this->handle,
                 'namespacedId' => $fieldProperties['namespacedId'],
-                'registerJs' => $fieldProperties['registerJs'],
-                'editable' => $editable,
+                'value' => $value,
             ]
         );
     }
@@ -173,28 +196,28 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ?\craft\base\ElementInterface $element = null): mixed
+    public function normalizeValue($value, ?ElementInterface $element = null): LayoutModel
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
         }
         if (\is_array($value)) {
+            // Field data passed to Twig and GraphQL.
+
+            $settings = $this->getSettings();
+
             $model = new LayoutModel($value);
+            $model->columns = $settings['cols'];
+            $model->rows = $settings['rows'];
         } elseif ($value instanceof LayoutModel) {
+            // Field data used when saving the field.
             $model = $value;
         } else {
-            $model = new LayoutModel([]);
+            // Field data used in field inputs.
+            $model = new LayoutModel(['raw' => $value]);
         }
 
         return $model;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function serializeValue($value, ?\craft\base\ElementInterface $element = null): mixed
-    {
-        return parent::serializeValue($value, $element);
     }
 
     // Private Methods
@@ -205,8 +228,6 @@ class Layout extends Field
      */
     private function getFieldProperties(): array
     {
-//        Craft::dd($this);
-        
         // Get our id and namespace
         $id = Html::id($this->handle ?? '');
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
@@ -220,13 +241,11 @@ class Layout extends Field
             'namespacedId' => $namespacedId,
             'prefix' => Craft::$app->getView()->namespaceInputId(''),
         ];
-        $jsonVarsString = Json::encode($jsonVars);
 
         return [
             'id' => $id,
             'jsVars' => $jsonVars,
             'namespacedId' => $namespacedId,
-            'registerJs' => "$(`[data-little-layout='{$namespacedId}']`).LittleLayout(" . $jsonVarsString . ");",
         ];
     }
 }

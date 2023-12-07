@@ -1,4 +1,4 @@
-# Little Layout plugin for Craft CMS 4.x
+# Little Layout for Craft CMS 4
 
 A compact, visual way to lay out fields, elements, and Matrix blocks.
 
@@ -11,12 +11,14 @@ This plugin requires Craft CMS 4.0 or later.
 To install the plugin, follow these instructions.
 
 1. Open your terminal and go to your Craft project:
-
-        cd /path/to/project
+   ```bash
+   cd /path/to/project
+   ```
 
 2. Then tell Composer to load the plugin:
-
-        composer require wbrowar/craft-little-layout
+   ```bash
+   composer require wbrowar/craft-little-layout
+   ```
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Little Layout.
 
@@ -44,18 +46,20 @@ Use the Empty Layout setting to determine if authors can clear out the layouts t
 
 The following data can be retrieved in your Twig- or GraphQL-based templates:
 
-| Property | Description |
-|---|---|
-| **empty** | Determine if field has a value. |
-| **gridColumnStart** | Value for CSS Grid’s `grid-column-start` and `grid-column` properties. |
-| **gridColumnEnd** | Value for CSS Grid’s `grid-column-end` and `grid-column` properties. |
-| **gridRowStart** | Value for CSS Grid’s `grid-row-start` and `grid-row` properties. |
-| **gridRowEnd** | Value for CSS Grid’s `grid-row-end` and `grid-row` properties. |
-| **gridColumnSpan** | Value for CSS Grid’s `grid-column` property. |
-| **gridRowSpan** | Value for CSS Grid’s `grid-row` property. |
-| **selectedColumns** | Array of columns selected in the layout field. |
-| **selectedRows** | Array of rows selected in the layout field. |
-| **selectedCoordinates** | Array of coordinates* selected in the layout field. |
+| Property                | Description                                                            |
+|-------------------------|------------------------------------------------------------------------|
+| **empty**               | Determine if field has a value.                                        |
+| **gridColumnStart**     | Value for CSS Grid’s `grid-column-start` and `grid-column` properties. |
+| **gridColumnEnd**       | Value for CSS Grid’s `grid-column-end` and `grid-column` properties.   |
+| **gridRowStart**        | Value for CSS Grid’s `grid-row-start` and `grid-row` properties.       |
+| **gridRowEnd**          | Value for CSS Grid’s `grid-row-end` and `grid-row` properties.         |
+| **gridColumnSpan**      | Value for CSS Grid’s `grid-column` property.                           | 
+| **gridRowSpan**         | Value for CSS Grid’s `grid-row` property.                              |
+| **selectedColumns**     | Array of columns selected in the layout field.                         |
+| **selectedRows**        | Array of rows selected in the layout field.                            |
+| **selectedCoordinates** | Array of coordinates* selected in the layout field.                    |
+| **totalColumns**        | The columns setting for this field.                                    |
+| **totalRows**           | The rows setting for this field.                                       |
 
 _*Coordinates are formatted in `'x|y'` format._
 
@@ -105,7 +109,7 @@ With CSS that looks like this:
 If you use a CSS framework, like Tailwind CSS, you could do something like this:
 
 ```twig
-<div class="col-start-{{ element.fieldHandle.gridColumnStart }} col-span-{{ element.fieldHandle.gridColumnSpan }} row-start-{{ element.fieldHandle.gridRowStart }} row-span-{{ element.fieldHandle.gridRowSpan }}"></div>
+<div class="col-start-[{{ element.fieldHandle.gridColumnStart }}] col-span-[{{ element.fieldHandle.gridColumnSpan }}] row-start-[{{ element.fieldHandle.gridRowStart }}] row-span-[{{ element.fieldHandle.gridRowSpan }}]"></div>
 ```
 
 If your Twig template files are included in your Tailwind confguration’s `content` patterns, you may prefer to preserve full class names using logic and a lookup table:

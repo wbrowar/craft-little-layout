@@ -120,12 +120,11 @@ class LittleLayout extends Plugin
 
         if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
             return [
-                'css' => 'http://localhost:3100/_source/_css/app.css',
                 'js' => 'http://localhost:3100/' . $filename,
             ];
         }
 
-        $manifestPath = self::$plugin->getBasePath() . '/assetbundles/dist/manifest.json';
+        $manifestPath = self::$plugin->getBasePath() . '/assetbundles/dist/.vite/manifest.json';
 
         if ($manifestPath ?? false) {
             $manifestJson = file_get_contents($manifestPath);
@@ -150,8 +149,4 @@ class LittleLayout extends Plugin
 
         return $assetPaths;
     }
-
-    // Protected Methods
-    // =========================================================================
-
 }

@@ -13,26 +13,33 @@
  */
 #}
 
+{% import '_includes/forms.twig' as forms %}
+
 {% set startingValue = value.raw == '' ? field.defaultValue : value.raw %}
 
-{#{% dd field.required %}#}
-{#{% if field.required %}#}
-{#  {% dd 'it happened' %}#}
-{#{% endif %}#}
+{% set clearable = false %}
+{% if not field.required and field.clearable == 1 %}
+    {% set clearable = true %}
+{% endif %}
 
-<div
-  data-little-layout="{{ namespacedId }}"
-  data-field-type="input"
-  data-default-value="{{ startingValue }}"
-  data-clearable="{{ field.required ? 0 : field.clearable }}"
-  data-cols="{{ field.cols }}"
-  data-editable="{{ editable ? 'true' : 'false' }}"
-  data-handle="{{ field.handle }}"
-  data-rows="{{ field.rows }}"
-  data-selection-mode="{{ field.selectionMode }}"
-  data-scroll-message="{{ ('Scroll horizontally to see more layout values.')|t }}"
-></div>
-
-<input data-little-layout-placeholder="{{ namespacedId }}" type="hidden" name="{{ name }}[raw]" autofocus="" autocomplete="off" value="{{ startingValue }}">
-
-{% do craft.app.view.registerJs(registerJs) %}
+<little-layout-field
+    style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
+    {{ clearable ? 'clearable="true"' : '' }}
+    {{ editable ? 'editable="true"' : '' }}
+    box-icons="{{ boxIcons|json_encode }}"
+    field-id="{{ namespacedId }}"
+    field-name="{{ fieldNamespacedName }}"
+    layout-cols="{{ field.cols }}"
+    layout-rows="{{ field.rows }}"
+    selection-mode="{{ field.selectionMode }}"
+>
+    {{ forms.hidden({
+        inputAttributes: {
+            data: {
+                'little-layout-id': fieldNamespacedName,
+            }
+        },
+        name: name,
+        value: startingValue,
+    }) }}
+</little-layout-field>

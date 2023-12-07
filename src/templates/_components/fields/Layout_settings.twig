@@ -13,19 +13,144 @@
  */
 #}
 
-{#{% js assets.js %}#}
-{#{% css assets.css %}#}
+{% import '_includes/forms.twig' as forms %}
 
-<div
-  data-little-layout="{{ namespacedId }}"
-  data-field-type="settings"
-  data-clearable="{{ field.clearable }}"
-  data-cols="{{ field.cols }}"
-  data-default-value="{{ field.defaultValue }}"
-  data-rows="{{ field.rows }}"
-  data-selection-mode="{{ field.selectionMode }}"
-></div>
+{#{% dd name %}#}
+{#{% dd field %}#}
+{#{% dd fieldNamespacedName %}#}
+{#{% dd namespacedId %}#}
+{#{% dd registerJs %}#}
 
-<input data-little-layout-placeholder="{{ namespacedId }}" type="hidden" name="defaultValue" autofocus="" autocomplete="off" value="{{ field.defaultValue }}">
+<little-layout-field-settings
+    default-value="{{ field.defaultValue }}"
+    field-id="{{ namespacedId }}"
+    field-name="{{ name }}[defaultValue]"
+    layout-cols="{{ field.cols }}"
+    layout-rows="{{ field.rows }}"
+    selection-mode="{{ field.selectionMode }}"
+>
+    <div class="little-layout-settings__fields">
+        {{ forms.textField({
+            id: "cols",
+            instructions: 'Define the columns in your layout.'|t('little-layout'),
+            label: 'Layout Columns'|t('little-layout'),
+            name: "cols",
+            required: true,
+            min: 1,
+            size: 3,
+            type: 'number',
+            value: field.cols,
+        }) }}
 
-{% do craft.app.view.registerJs(registerJs) %}
+        {{ forms.textField({
+            id: "rows",
+            instructions: 'Define the rows in your layout.'|t('little-layout'),
+            label: 'Layout Rows'|t('little-layout'),
+            name: "rows",
+            required: true,
+            min: 1,
+            size: 3,
+            type: 'number',
+            value: field.rows,
+        }) }}
+
+        {{ forms.textField({
+            id: "boxSize",
+            instructions: 'CSS value that sets the size of the layout boxes.'|t('little-layout'),
+            label: 'Box Size'|t('little-layout'),
+            name: "boxSize",
+            placeholder: '22px',
+            value: field.boxSize,
+        }) }}
+
+        {{ forms.selectField({
+            id: "clearable",
+            label: 'Empty Layout'|t('little-layout'),
+            name: "clearable",
+            options: {
+                1: 'Layouts can be reset'|t('little-layout'),
+                2: 'Layouts cannot be reset'|t('little-layout')
+            },
+            required: true,
+            value: field.clearable,
+        }) }}
+
+        {{ forms.selectField({
+            id: "selectionMode",
+            label: 'Selection Mode'|t('little-layout'),
+            name: "selectionMode",
+            options: {
+                box: 'Select multiple rows and columns'|t('little-layout'),
+                single: 'Select a single box'|t('little-layout')
+            },
+            required: true,
+            value: field.selectionMode,
+        }) }}
+    </div>
+    <div class="little-layout-settings__default-value-label">
+        {{ forms.field({
+            instructions: 'Select a default value for this field using the layout boxes below.'|t('little-layout'),
+            label: 'Default value'|t('little-layout'),
+        }) }}
+    </div>
+    <div class="little-layout-settings__icons">
+        {{ forms.editableTableField({
+            label: 'Box Icons'|t('little-layout'),
+            instructions: 'Add icons to layout boxes when using this field to select alingment options.'|t('admin-bar'),
+            id: 'boxIcons',
+            name: 'boxIcons',
+            addRowLabel: 'Add an icon'|t('little-layout'),
+            allowAdd: true,
+            allowDelete: true,
+            allowReorder: true,
+            cols: {
+                column: {
+                    heading: 'Column'|t('little-layout'),
+                    info: 'Selects the column to place the icon.'|t('little-layout'),
+                    required: true,
+                    thin: true,
+                    type: 'number',
+                },
+                row: {
+                    heading: 'Row'|t('little-layout'),
+                    info: 'Selects the row to place the icon.'|t('little-layout'),
+                    required: true,
+                    thin: true,
+                    type: 'number',
+                },
+                icon: {
+                    heading: 'Icon'|t('little-layout'),
+                    options: [
+                        { label: 'Align: Top', value: 'alignTop' },
+                        { label: 'Align: Center Vertical', value: 'alignCenterVertical' },
+                        { label: 'Align: Bottom', value: 'alignBottom' },
+                        { label: 'Align: Center', value: 'alignCenter' },
+                        { label: 'Align: Left', value: 'alignLeft' },
+                        { label: 'Align: Center Horizontal', value: 'alignCenterHorizontal' },
+                        { label: 'Align: Right', value: 'alignRight' },
+                        { label: 'Arrow: Up', value: 'arrowUp' },
+                        { label: 'Arrow: Down', value: 'arrowDown' },
+                        { label: 'Arrow: Left', value: 'arrowLeft' },
+                        { label: 'Arrow: Right', value: 'arrowRight' },
+                        { label: 'Arrows In', value: 'arrowsInCorners' },
+                        { label: 'Arrows Out', value: 'arrowsOutCardinal' },
+                        { label: 'Arrows Out (corners)', value: 'arrowsOutCorners' },
+                        { label: 'Text Align: Left', value: 'textAlignLeft' },
+                        { label: 'Text Align: Center', value: 'textAlignCenter' },
+                        { label: 'Text Align: Right', value: 'textAlignRight' },
+                        { label: 'Text Align: Justified', value: 'textAlignJustified' },
+                    ],
+                    thin: true,
+                    type: 'select',
+                },
+                description: {
+                    heading: 'Description'|t('little-layout'),
+                    info: 'Description of what happens when the icon is selected.'|t('little-layout'),
+                    type: 'singleline',
+                },
+            },
+            defaultValues: { column: 1, row: 1 },
+            rows: field.boxIcons ?? [],
+        }) }}
+    </div>
+</little-layout-field-settings>

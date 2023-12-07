@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.0 - 2022-12-05
+### Added
+- Added field setting to add icons to Little Layout field boxes.
+- Added field setting to set the height and width of Little Layout field boxes, using CSS values.
+- Added ability to get column and row settings from a field in your Twig templates and GraphQL queries.
+
+### Changed
+- Improved performance by refactoring Little Layout field from a Vue app to a Web Component.
+- Refactored field settings from a Vue app to a Web Component.
+- Changed layout boxes in field from clickable div elements to `button` elements.
+- Updated doc blocks and added return types to all PHP files.
+- Updated JS bundler to Vite 5.x.
+- Bumped NodeJS to Node 20.x.
+
+### Removed
+- Removed message that popped up when it was detected that you would need to horizontally scroll.
+- Removed Vue and Tailwind CSS as front-end dependencies.
+
+### Fixed
+- Update the way the field is saved in order to allow for resaving via the CLI.
+- Removed field value change on initialization that caused Craft to think the field was updated before changes were made.
+
 
 ## 1.2.0 - 2022-05-01
 ### Added
