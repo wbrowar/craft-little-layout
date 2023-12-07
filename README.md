@@ -1,4 +1,4 @@
-# Little Layout plugin for Craft CMS 4.x
+# Little Layout for Craft CMS 4
 
 A compact, visual way to lay out fields, elements, and Matrix blocks.
 
@@ -11,12 +11,14 @@ This plugin requires Craft CMS 4.0 or later.
 To install the plugin, follow these instructions.
 
 1. Open your terminal and go to your Craft project:
-
-        cd /path/to/project
+   ```bash
+   cd /path/to/project
+   ```
 
 2. Then tell Composer to load the plugin:
-
-        composer require wbrowar/craft-little-layout
+   ```bash
+   composer require wbrowar/craft-little-layout
+   ```
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Little Layout.
 
