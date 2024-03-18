@@ -77,6 +77,15 @@ class Layout extends Field
         return Craft::t('little-layout', 'Little Layout');
     }
 
+
+    /**
+     * @inheritdoc
+     */
+    public static function icon(): string
+    {
+        return Craft::getAlias('@wbrowar/littlelayout/icon.svg');
+    }
+
     /**
      * @inheritdoc
      */
