@@ -153,7 +153,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getStaticHtml($value, ElementInterface $element): string
+    public function getStaticHtml(mixed $value, ElementInterface $element): string
     {
         return $this->getInputHtml($value, $element, false);
     }
@@ -161,7 +161,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml($value, ?ElementInterface $element = null, $editable = true): string
+    public function getInputHtml(mixed $value, ?ElementInterface $element = null, $editable = true): string
     {
         // Add our field JS
         $fieldProperties = $this->getFieldProperties();
@@ -169,7 +169,7 @@ class Layout extends Field
         $boxIcons = [];
         if ($this->boxIcons ?? false) {
             foreach ($this->boxIcons as $icon) {
-                if ($icon['column'] ?? false && $icon['row'] ?? false) {
+                if ($icon['column'] && $icon['row']) {
                     $boxIcons[$icon['column'] . '|' . $icon['row']] = [
                         'description' => $icon['description'],
                         'id' => $icon['icon'],
@@ -197,7 +197,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function isValueEmpty($value, ElementInterface $element): bool
+    public function isValueEmpty(mixed $value, ElementInterface $element): bool
     {
         return $value->getEmpty();
     }
@@ -205,7 +205,7 @@ class Layout extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ?ElementInterface $element = null): LayoutModel
+    public function normalizeValue(mixed $value, ?ElementInterface $element = null): LayoutModel
     {
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);

@@ -126,24 +126,24 @@ class LittleLayout extends Plugin
 
         $manifestPath = self::$plugin->getBasePath() . '/assetbundles/dist/.vite/manifest.json';
 
-        if ($manifestPath ?? false) {
+        if (file_exists($manifestPath)) {
             $manifestJson = file_get_contents($manifestPath);
 
-            if ($manifestJson ?? false) {
+            if ($manifestJson) {
                 $manifest = Json::decodeIfJson($manifestJson);
 
                 if ($manifest && $manifest[$filename]) {
                     $path = Craft::$app->getAssetManager()->getPublishedUrl('@wbrowar/littlelayout/assetbundles/dist/', true);
-                }
-            }
-        }
 
-        if ($path ?? false) {
-            if ($manifest[$filename]['css'] ?? false) {
-                $assetPaths['css'] = $path . '/' . $manifest[$filename]['css'][0];
-            }
-            if ($manifest[$filename]['file'] ?? false) {
-                $assetPaths['js'] = $path . '/' . $manifest[$filename]['file'];
+                    if ($path) {
+                        if ($manifest[$filename]['css'] ?? false) {
+                            $assetPaths['css'] = $path . '/' . $manifest[$filename]['css'][0];
+                        }
+                        if ($manifest[$filename]['file'] ?? false) {
+                            $assetPaths['js'] = $path . '/' . $manifest[$filename]['file'];
+                        }
+                    }
+                }
             }
         }
 
