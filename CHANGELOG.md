@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 2.0.0 - 2022-12-05
+## 3.0.0 - 2024-03-23
+### Added
+- Added support for Craft 5
+
+
+## 2.0.0 - 2023-12-05
 ### Added
 - Added field setting to add icons to Little Layout field boxes.
 - Added field setting to set the height and width of Little Layout field boxes, using CSS values.
