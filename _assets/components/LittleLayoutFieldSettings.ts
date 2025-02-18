@@ -25,6 +25,12 @@ export class LittleLayoutFieldSettings extends LitElement {
   fieldName = ''
 
   /**
+   * Messages translated via Craft’s `t` filter.
+   */
+  @property({ attribute: 't-messages', type: Object })
+  tMessages: Record<string, string> = {}
+
+  /**
    * =========================================================================
    * STATE
    * =========================================================================
@@ -187,6 +193,7 @@ export class LittleLayoutFieldSettings extends LitElement {
         layout-cols="${this._layoutCols}"
         layout-rows="${this._layoutRows}"
         selection-mode="${this._selectionMode}"
+        t-messages="${JSON.stringify(this.tMessages)}"
         @value-updated="${this._defaultValueListener}"
       >
         <input

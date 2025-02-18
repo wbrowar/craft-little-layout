@@ -21,6 +21,13 @@
 {#{% dd namespacedId %}#}
 {#{% dd registerJs %}#}
 
+{% set tMessages = {
+    'clear': 'Clear the default value'|t('little-layout'),
+    'selectionSingle': 'Click on a box to set the default value'|t('little-layout'),
+    'selectionBoxStart': 'Click a box to begin setting the default value'|t('little-layout'),
+    'selectionBoxEnd': 'Click a box to end setting the default value'|t('little-layout'),
+} %}
+
 <little-layout-field-settings
     default-value="{{ field.defaultValue }}"
     field-id="{{ namespacedId }}"
@@ -28,6 +35,7 @@
     layout-cols="{{ field.cols }}"
     layout-rows="{{ field.rows }}"
     selection-mode="{{ field.selectionMode }}"
+    t-messages="{{ tMessages|json_encode }}"
 >
     <div class="little-layout-settings__fields">
         {{ forms.textField({
@@ -94,6 +102,27 @@
         }) }}
     </div>
     <div class="little-layout-settings__icons">
+        {% set selectOptions = [
+            { label: 'Align: Top'|t('little-layout'), value: 'alignTop' },
+            { label: 'Align: Center Vertical'|t('little-layout'), value: 'alignCenterVertical' },
+            { label: 'Align: Bottom'|t('little-layout'), value: 'alignBottom' },
+            { label: 'Align: Center'|t('little-layout'), value: 'alignCenter' },
+            { label: 'Align: Left'|t('little-layout'), value: 'alignLeft' },
+            { label: 'Align: Center Horizontal'|t('little-layout'), value: 'alignCenterHorizontal' },
+            { label: 'Align: Right'|t('little-layout'), value: 'alignRight' },
+            { label: 'Arrow: Up'|t('little-layout'), value: 'arrowUp' },
+            { label: 'Arrow: Down'|t('little-layout'), value: 'arrowDown' },
+            { label: 'Arrow: Left'|t('little-layout'), value: 'arrowLeft' },
+            { label: 'Arrow: Right'|t('little-layout'), value: 'arrowRight' },
+            { label: 'Arrows In'|t('little-layout'), value: 'arrowsInCorners' },
+            { label: 'Arrows Out'|t('little-layout'), value: 'arrowsOutCardinal' },
+            { label: 'Arrows Out (corners)'|t('little-layout'), value: 'arrowsOutCorners' },
+            { label: 'Text Align: Left'|t('little-layout'), value: 'textAlignLeft' },
+            { label: 'Text Align: Center'|t('little-layout'), value: 'textAlignCenter' },
+            { label: 'Text Align: Right'|t('little-layout'), value: 'textAlignRight' },
+            { label: 'Text Align: Justified'|t('little-layout'), value: 'textAlignJustified' },
+        ] %}
+
         {{ forms.editableTableField({
             label: 'Box Icons'|t('little-layout'),
             instructions: 'Add icons to layout boxes when using this field to select alingment options.'|t('admin-bar'),
@@ -120,26 +149,7 @@
                 },
                 icon: {
                     heading: 'Icon'|t('little-layout'),
-                    options: [
-                        { label: 'Align: Top', value: 'alignTop' },
-                        { label: 'Align: Center Vertical', value: 'alignCenterVertical' },
-                        { label: 'Align: Bottom', value: 'alignBottom' },
-                        { label: 'Align: Center', value: 'alignCenter' },
-                        { label: 'Align: Left', value: 'alignLeft' },
-                        { label: 'Align: Center Horizontal', value: 'alignCenterHorizontal' },
-                        { label: 'Align: Right', value: 'alignRight' },
-                        { label: 'Arrow: Up', value: 'arrowUp' },
-                        { label: 'Arrow: Down', value: 'arrowDown' },
-                        { label: 'Arrow: Left', value: 'arrowLeft' },
-                        { label: 'Arrow: Right', value: 'arrowRight' },
-                        { label: 'Arrows In', value: 'arrowsInCorners' },
-                        { label: 'Arrows Out', value: 'arrowsOutCardinal' },
-                        { label: 'Arrows Out (corners)', value: 'arrowsOutCorners' },
-                        { label: 'Text Align: Left', value: 'textAlignLeft' },
-                        { label: 'Text Align: Center', value: 'textAlignCenter' },
-                        { label: 'Text Align: Right', value: 'textAlignRight' },
-                        { label: 'Text Align: Justified', value: 'textAlignJustified' },
-                    ],
+                    options: selectOptions,
                     thin: true,
                     type: 'select',
                 },

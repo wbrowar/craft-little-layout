@@ -22,6 +22,13 @@
     {% set clearable = true %}
 {% endif %}
 
+{% set tMessages = {
+    'clear': 'Clear the current value'|t('little-layout'),
+    'selectionSingle': 'Click on a box to select it'|t('little-layout'),
+    'selectionBoxStart': 'Click a box to begin a layout selection'|t('little-layout'),
+    'selectionBoxEnd': 'Click another box to select a layout range'|t('little-layout'),
+} %}
+
 <little-layout-field
     style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
     {{ clearable ? 'clearable="true"' : '' }}
@@ -32,6 +39,7 @@
     layout-cols="{{ field.cols }}"
     layout-rows="{{ field.rows }}"
     selection-mode="{{ field.selectionMode }}"
+    t-messages="{{ tMessages|json_encode }}"
 >
     {{ forms.hidden({
         inputAttributes: {

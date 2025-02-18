@@ -1,10 +1,11 @@
 {
   "little-layout.ts": {
-    "css": [
-      "assets/little-layout-LccwjwnG.css"
-    ],
-    "file": "assets/little-layout-nbEFsFTq.js",
+    "file": "assets/little-layout-DmP1f3f9.js",
+    "name": "little-layout",
+    "src": "little-layout.ts",
     "isEntry": true,
-    "src": "little-layout.ts"
+    "css": [
+      "assets/little-layout-fOHosKx9.css"
+    ]
   }
 }

@@ -10,18 +10,16 @@
 
 namespace wbrowar\littlelayout;
 
+use Craft;
+use craft\base\Plugin;
+use craft\events\RegisterComponentTypesEvent;
 use craft\events\RegisterGqlTypesEvent;
 use craft\helpers\App;
 use craft\helpers\Json;
+use craft\services\Fields;
 use craft\services\Gql;
 use craft\web\View;
 use wbrowar\littlelayout\fields\Layout as LayoutField;
-
-use Craft;
-use craft\base\Plugin;
-use craft\services\Fields;
-use craft\events\RegisterComponentTypesEvent;
-
 use wbrowar\littlelayout\gql\types\LittleLayoutType;
 use yii\base\Event;
 
@@ -118,7 +116,7 @@ class LittleLayout extends Plugin
             'js' => '',
         ];
 
-        if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == 'true') {
+        if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') == true) {
             return [
                 'js' => 'http://localhost:3100/' . $filename,
             ];

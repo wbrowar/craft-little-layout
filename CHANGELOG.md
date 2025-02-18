@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.0 - 2025-02-18
+### Added
+- Added tooltips with instructions on how to start and stop layout selections and clear out the current field value.
+  - Browser that support CSS Anchor Positioning will display tooltip below or above the field, based on the page’s scroll position.
+
+### Changed
+- Removed the `title` attribute on layout boxes when setting a description on a box icon and moved that text over to the tooltip.
+- Updated Node dependencies.
+- Removed Lightning CSS from front-end asset build process.
+
+### Fixed
+- Fixed a layout bug that occured on Field Settings pages when the browser window width was smaller than a certain size.
+- The Craft CMS minimum required version was bumped up to `^5.5.0`. This fixes a CP CSS issue that occurs based on a recent Craft CMS update.
+
 ## 3.0.0 - 2024-08-11
 ### Added
 - Added support for Craft 5

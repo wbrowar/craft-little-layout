@@ -54,6 +54,12 @@ export class LittleLayoutFieldControl extends LitElement {
   selectionMode: SelectionMode = 'box'
 
   /**
+   * Messages translated via Craft’s `t` filter.
+   */
+  @property({ attribute: 't-messages', type: Object })
+  tMessages: Record<string, string> = {}
+
+  /**
    * ===========================================================================
    * STATE
    * ===========================================================================
@@ -69,6 +75,12 @@ export class LittleLayoutFieldControl extends LitElement {
    */
   @state()
   protected _timer?: ReturnType<typeof setTimeout> = undefined
+
+  /**
+   * The text to be shown in the tooltip. This will change based on the value of `_status` or if a layout box has a tooltip.
+   */
+  @state()
+  private _tooltipText = ''
 
   /**
    * The coordinate of the starting X value.
@@ -233,8 +245,10 @@ export class LittleLayoutFieldControl extends LitElement {
         this._timer = setInterval(() => {
           activeElement?.blur()
           this._status = 'idle'
+          this._setTooltipText()
         }, 10000)
         this._status = 'inputStarted'
+        this._setTooltipText()
       } else if (this.selectionMode === 'single') {
         activeElement?.blur()
       }
@@ -270,6 +284,28 @@ export class LittleLayoutFieldControl extends LitElement {
   private _endTimer() {
     clearInterval(this._timer)
     this._status = 'idle'
+    this._setTooltipText()
+  }
+
+  /**
+   * Sets the tooltip text based on the value of `_status` or overrides the tooltip with custom text.
+   */
+  private _setTooltipText(tooltipText?: string) {
+    let newTooltopText = ''
+    if (tooltipText) {
+      newTooltopText = tooltipText
+    } else {
+      if (this.selectionMode === 'single') {
+        newTooltopText = this.tMessages?.selectionSingle
+      } else if (this.selectionMode === 'box') {
+        if (this._status === 'idle') {
+          newTooltopText = this.tMessages?.selectionBoxStart
+        } else if (this._status === 'inputStarted') {
+          newTooltopText = this.tMessages?.selectionBoxEnd
+        }
+      }
+    }
+    this._tooltipText = newTooltopText
   }
 
   /**
@@ -291,6 +327,8 @@ export class LittleLayoutFieldControl extends LitElement {
     this._fieldValue = this._getFieldValue()
     this._hasSelected = this._getHasSelected()
     this._selectedBoxes = this._getSelectedBoxes()
+
+    this._setTooltipText()
   }
   protected render() {
     const cols = this.layoutCols
@@ -310,8 +348,8 @@ export class LittleLayoutFieldControl extends LitElement {
         checkboxCols.push(
           html` <button
             class="layout-box ${this._boxClassesForBox(column, row)}"
-            title="${icon?.description ?? nothing}"
             type="button"
+            @mouseover="${() => this._setTooltipText(icon?.description ?? undefined)}"
             @click="${this.editable ? () => this._boxClicked([column, row]) : nothing}"
           >
             ${boxIconSvgs[icon?.id] ?? nothing}
@@ -345,10 +383,12 @@ export class LittleLayoutFieldControl extends LitElement {
                 title="Clear"
                 aria-label="Clear"
                 @click="${this._clearButtonClicked}"
+                @mouseover="${() => this._setTooltipText(this.tMessages?.clear)}"
               ></button>`
             : nothing}
         </div>
       </div>
+      <div class="layout-tooltip">${this._tooltipText}</div>
       ${import.meta.env.DEV && import.meta.env.VITE_SHOW_FIELD_DEBUG_INFO === 'true' ? debugInfo : nothing}
     `
   }
