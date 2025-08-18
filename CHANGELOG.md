@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## 3.1.1 - 2025-08-17
+### Changed
+- Refactored CSS and JavaScript files to be registered as asset bundles, instead of individual file registrations.
+
+
 ## 3.1.0 - 2025-02-18
 ### Added
 - Added tooltips with instructions on how to start and stop layout selections and clear out the current field value.
@@ -17,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Fixed
 - Fixed a layout bug that occured on Field Settings pages when the browser window width was smaller than a certain size.
 - The Craft CMS minimum required version was bumped up to `^5.5.0`. This fixes a CP CSS issue that occurs based on a recent Craft CMS update.
+
 
 ## 3.0.0 - 2024-08-11
 ### Added
