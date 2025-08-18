@@ -12,7 +12,7 @@ class LittleLayoutAssetHelper
 {
     public static function getHmrUrl(): string
     {
-        return App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') ? 'http://localhost:3100' : '';
+        return App::parseEnv('$VITE_LITTLE_LAYOUT_HMR') ? 'http://localhost:3200/' : '';
     }
 
     /**
@@ -24,7 +24,7 @@ class LittleLayoutAssetHelper
      */
     public static function registerAssetFiles(): void
     {
-        if (App::parseEnv('$VITE_GUIDE_HMR')) {
+        if (App::parseEnv('$VITE_LITTLE_LAYOUT_HMR')) {
             Craft::$app->getView()->registerJsFile(
                 LittleLayoutAssetHelper::getHmrUrl() . 'little-layout.ts', ['defer' => true, 'type' => 'module']);
         } else {
