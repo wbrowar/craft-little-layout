@@ -16,7 +16,6 @@ use craft\events\RegisterComponentTypesEvent;
 use craft\events\RegisterGqlTypesEvent;
 use craft\services\Fields;
 use craft\services\Gql;
-use craft\web\View;
 use wbrowar\littlelayout\fields\Layout as LayoutField;
 use wbrowar\littlelayout\gql\types\LittleLayoutType;
 use wbrowar\littlelayout\helpers\LittleLayoutAssetHelper;
@@ -81,7 +80,7 @@ class LittleLayout extends Plugin
             $event->types[] = LittleLayoutType::class;
         });
 
-        if (Craft::$app->getView()->getTemplateMode() === View::TEMPLATE_MODE_CP) {
+        if (Craft::$app->getRequest()->getIsCpRequest()) {
             LittleLayoutAssetHelper::registerAssetFiles();
         }
 

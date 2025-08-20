@@ -10,16 +10,15 @@
 
 namespace wbrowar\littlelayout\fields;
 
-use craft\helpers\Html;
-
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
+use craft\helpers\Html;
+use craft\helpers\Json;
 use GraphQL\Type\Definition\Type;
 use wbrowar\littlelayout\gql\types\LittleLayoutType;
 use wbrowar\littlelayout\models\LayoutModel;
 use yii\db\Schema;
-use craft\helpers\Json;
 
 /**
  * @author    Will Browar

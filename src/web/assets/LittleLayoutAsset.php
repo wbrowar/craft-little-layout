@@ -15,7 +15,6 @@ class LittleLayoutAsset extends AssetBundle
      */
     public function init(): void
     {
-
         $this->css = ['little-layout.css'];
         $this->js = ['little-layout.js'];
         $this->jsOptions = ['position' => Craft::$app->getView()::POS_BEGIN, 'type' => 'module'];
