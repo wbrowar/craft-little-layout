@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## 3.1.3 - 2026-10-08
+### Added
+- Added setting to enable or disable tooltip.
+  - Tooltip is now disabled by default.
+
+### Fixed
+- Fixed unselected icon color when using custom icons.
+
+
 ## 3.1.2 - 2025-08-20
 ### Fixed
 - Fixed issue where loading assets would cause an error for some console commands.

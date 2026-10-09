@@ -29,6 +29,12 @@ export class LittleLayoutFieldControl extends LitElement {
   editable = false
 
   /**
+   * Enables the ability to use the field.
+   */
+  @property({ attribute: 'enable-tooltip', type: Boolean })
+  enableTooltip = false
+
+  /**
    * The default value of the field, used when setting the initial value.
    */
   @property({ attribute: 'field-default' })
@@ -388,7 +394,7 @@ export class LittleLayoutFieldControl extends LitElement {
             : nothing}
         </div>
       </div>
-      <div class="layout-tooltip">${this._tooltipText}</div>
+      ${this.enableTooltip ? html`<div class="layout-tooltip">${this._tooltipText}</div>` : nothing}
       ${import.meta.env.DEV && import.meta.env.VITE_SHOW_FIELD_DEBUG_INFO === 'true' ? debugInfo : nothing}
     `
   }

@@ -58,6 +58,11 @@ class Layout extends Field
     /**
      * @var int
      */
+    public int $enableTooltip = 0;
+
+    /**
+     * @var int
+     */
     public int $rows = 1;
 
     /**
@@ -103,8 +108,8 @@ class Layout extends Field
     {
         $rules = parent::rules();
         $rules = array_merge($rules, [
-            [['clearable', 'cols', 'rows'], 'integer'],
-            [['clearable', 'cols', 'rows'], 'default', 'value' => 1],
+            [['clearable', 'cols', 'enableTooltip', 'rows'], 'integer'],
+            [['clearable', 'cols', 'enableTooltip', 'rows'], 'default', 'value' => 1],
             [['boxSize', 'defaultValue', 'selectionMode'], 'string'],
             ['boxSize', 'default', 'value' => ''],
             ['defaultValue', 'default', 'value' => ''],

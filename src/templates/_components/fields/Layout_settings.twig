@@ -71,6 +71,15 @@
             value: field.boxSize,
         }) }}
 
+
+        {{ forms.lightswitchField({
+            id: "enableTooltip",
+            instructions: 'Explains how the field works when setting a layout range.'|t('little-layout'),
+            label: 'Show Tooltip'|t('little-layout'),
+            name: "enableTooltip",
+            on: field.enableTooltip,
+        }) }}
+
         {{ forms.selectField({
             id: "clearable",
             label: 'Empty Layout'|t('little-layout'),

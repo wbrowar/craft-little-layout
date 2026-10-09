@@ -33,6 +33,7 @@
     style="{{ field.boxSize ? '--little-layout-box-size: ' ~ field.boxSize : '' }}"
     {{ clearable ? 'clearable="true"' : '' }}
     {{ editable ? 'editable="true"' : '' }}
+    {{ field.enableTooltip == 1 ? 'enable-tooltip="true"' : '' }}
     box-icons="{{ boxIcons|json_encode }}"
     field-id="{{ namespacedId }}"
     field-name="{{ fieldNamespacedName }}"

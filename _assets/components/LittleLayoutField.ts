@@ -36,6 +36,12 @@ export class LittleLayoutField extends LitElement {
   editable = false
 
   /**
+   * Enables the ability to use the field.
+   */
+  @property({ attribute: 'enable-tooltip', type: Boolean })
+  enableTooltip = false
+
+  /**
    * The ID attribute for the input field.
    */
   @property({ attribute: 'field-id' })
@@ -168,6 +174,7 @@ export class LittleLayoutField extends LitElement {
       <little-layout-field-control
         ?clearable="${this.clearable}"
         ?editable="${this.editable}"
+        ?enable-tooltip="${this.enableTooltip}"
         box-icons="${JSON.stringify(this.boxIcons)}"
         field-default="${this._fieldValue}"
         layout-cols="${this.layoutCols}"

@@ -18,29 +18,28 @@ little-layout-field-control {
     & .field {
         display: grid;
         grid-template-columns: min-content minmax(0, 1fr);
-        gap: 0.3rem;
         align-items: center;
+        gap: 0.3rem;
     }
 
     & .layout-boxes {
         display: flex;
         flex-direction: column;
         gap: var(--layout-boxes-gap);
+        color: var(--medium-dark-text-color);
     }
 
     & .layout-tooltip {
         display: none;
         margin-block: var(--layout-boxes-gap);
-        padding: 7px;
-        min-width: 15ch;
+        padding: 9px;
         max-width: 60ch;
-        background-color: var(--gray-150);
-        border: 1px solid var(--medium-dark-text-color);
+        background-color: var(--medium-dark-text-color);
         border-radius: var(--layout-box-border-radius);
         text-box: trim-both cap alphabetic;
         text-wrap: balance;
-        color: var(--medium-dark-text-color);
-        z-index: 1;
+        color: var(--gray-150);
+        z-index: 10000;
     }
     &:has(:is(.clear-button, .layout-boxes):hover) .layout-tooltip {
         display: inline-block;

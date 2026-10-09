@@ -54,6 +54,12 @@ export class LittleLayoutFieldSettings extends LitElement {
   protected _defaultValue = ''
 
   /**
+   * Enables the tooltip that appears when hovering over a layout box.
+   */
+  @state()
+  protected _enableTooltip = false
+
+  /**
    * Value of the Layout Columns settings field.
    */
   @state()
@@ -100,6 +106,10 @@ export class LittleLayoutFieldSettings extends LitElement {
       case 'cols':
         log('Settings updated: cols', field.value)
         this._layoutCols = parseInt(field.value)
+        break
+      case 'enableTooltip':
+        log('Settings updated: enableTooltip', field.value === '1')
+        this._enableTooltip = field.value === '1'
         break
       case 'rows':
         log('Settings updated: rows', field.value)
@@ -149,6 +159,7 @@ export class LittleLayoutFieldSettings extends LitElement {
     const settingsFields: Record<string, string> = {
       boxSize: `[data-attribute="boxSize"] input`,
       cols: `[data-attribute="cols"] input`,
+      enableTooltip: `[data-attribute="enableTooltip"] input`,
       rows: `[data-attribute="rows"] input`,
       selectionMode: `[data-attribute="selectionMode"] select`,
     }
@@ -157,10 +168,26 @@ export class LittleLayoutFieldSettings extends LitElement {
     Object.entries(settingsFields).forEach(([handle, selector]) => {
       const field: HTMLInputElement | null = this.querySelector(selector)
       if (field) {
-        field.addEventListener('change', () => {
-          log(`Field updated: ${handle}`)
-          this._getSettingsFromField(handle, field)
-        })
+        if (handle === 'enableTooltip') {
+          const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+              // Check if the 'value' attribute was the one modified
+              if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
+                log(`Field updated: ${handle}`)
+                this._getSettingsFromField(handle, field)
+              }
+            }
+          })
+
+          // Start observing the hidden input for attribute changes
+          observer.observe(field, { attributes: true })
+        } else {
+          field.addEventListener('input', () => {
+            log(`Field updated: ${handle}`)
+            this._getSettingsFromField(handle, field)
+          })
+        }
+
         this._getSettingsFromField(handle, field)
       } else {
         log(`Field not found: ${handle}`)
@@ -188,6 +215,7 @@ export class LittleLayoutFieldSettings extends LitElement {
         style="${this._boxSize ? `--little-layout-box-size: ${this._boxSize}` : nothing}"
         clearable="true"
         editable="true"
+        enable-tooltip="${this._enableTooltip ? 'true' : nothing}"
         box-icons="${JSON.stringify(this._boxIcons)}"
         field-default="${this.defaultValue}"
         layout-cols="${this._layoutCols}"
